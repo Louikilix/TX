@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Writing Definitions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @writing_definitions.each do |writing_definition| %>
+      <tr>
+        <td>definition: </td>
+        <td><%= link_to 'Show', writing_definition %></td>
+        <td><%= link_to 'Edit', edit_writing_definition_path(writing_definition) %></td>
+        <td><%= link_to 'Destroy', writing_definition, data: { confirm: 'Are you sure?' }, :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Writing Definition', new_writing_definition_path %>

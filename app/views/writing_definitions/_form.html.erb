@@ -1,0 +1,19 @@
+<%= form_with(model: writing_definition) do |form| %>
+  <% if writing_definition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(writing_definition.errors.count, "error") %> prohibited this writing_definition from being saved:</h2>
+
+      <ul>
+        <% writing_definition.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.label :body %> 
+    <%= form.text_field :body %> 
+    <%= form.submit %>
+  </div>
+<% end %>

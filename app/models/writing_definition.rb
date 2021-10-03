@@ -1,0 +1,2 @@
+class WritingDefinition < ApplicationRecord
+end

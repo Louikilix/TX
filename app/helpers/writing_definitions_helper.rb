@@ -1,0 +1,2 @@
+module WritingDefinitionsHelper
+end

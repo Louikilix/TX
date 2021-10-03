@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<% if @writing_image.image.persisted? && @writing_image.image.present? %>
+    <%= image_tag(@writing_image.image) %>
+<%end%>
+
+<%= link_to 'Edit', edit_writing_image_path(@writing_image) %> |
+<%= link_to 'Back', writing_images_path %>
