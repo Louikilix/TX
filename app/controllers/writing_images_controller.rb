@@ -8,6 +8,7 @@ class WritingImagesController < ApplicationController
 
   # GET /writing_images/1 or /writing_images/1.json
   def show
+    @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).first
   end
 
   # GET /writing_images/new
