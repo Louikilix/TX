@@ -17,6 +17,10 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <%= yield %>
+
+    <%= render "admins/shared/header"%>
+    <div class= app-container>
+      <%= yield %>
+    </div>
   </body>
 </html>

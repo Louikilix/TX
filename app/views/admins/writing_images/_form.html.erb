@@ -1,4 +1,4 @@
-<%= form_with(model: writing_image) do |form| %>
+<%= form_with(model: [:admins, writing_image]) do |form| %>
   <% if writing_image.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(writing_image.errors.count, "error") %> prohibited this writing_image from being saved:</h2>
@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="actions">
-    <% if @def_id.present? %>
-      <%= hidden_field_tag(:def_id, value = @def_id) %>
-    <%end%>
     <%= form.file_field :image %>
+    <%= form.label :published %> 
+    <%= form.radio_button :published, true %> yes<br />
+    <%= form.radio_button :published, false %> no<br />
     <%= form.submit "save" %>
   </div>
 

@@ -1,5 +1,5 @@
 <% @writing_images.each do |writing_image| %>
   <% if writing_image.image.persisted? && writing_image.image.present? %>
-      <%= link_to image_tag(writing_image.image), writing_image %>
+      <%= link_to image_tag(writing_image.image), new_writing_definition_path(image: writing_image.id ) %>
   <%end%>
 <% end %>

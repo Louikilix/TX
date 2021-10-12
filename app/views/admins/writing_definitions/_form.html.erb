@@ -1,4 +1,4 @@
-<%= form_with(model: writing_definition) do |form| %>
+<%= form_with(model: [:admins, writing_definition]) do |form| %>
   <% if writing_definition.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(writing_definition.errors.count, "error") %> prohibited this writing_definition from being saved:</h2>
@@ -12,11 +12,18 @@
   <% end %>
 
   <div class="actions">
-    <% if @image.present? %>
-      <%= hidden_field_tag(:image_id, value = @image_id) %>
-    <%end%>
     <%= form.label :body %> 
-    <%= form.text_field :body, value: @corresponding_def %> 
+    <%= form.text_field :body %> 
+    
+    <%= form.select :image_id, options_for_select(WritingImage.all.map{ |i| [i.id, {'data-img-src'=>i.image}] }), include_blank: true %>
+    
+    <%= form.label :published %> 
+    <%= form.radio_button :published, true %> yes<br />
+    <%= form.radio_button :published, false %> no<br />
+
     <%= form.submit %>
+
+    
+    
   </div>
 <% end %>

@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h1> <%= @writing_definition.body %> </h1>
-<%= link_to 'Edit the definition', edit_writing_definition_path(@writing_definition) %>
+<% if @writing_definition.writing_images.last.present? %>
+	<%=image_tag(@writing_definition.writing_images.last.image) %>
+<% end %>
+<%= link_to 'Create a new image linked to your definition', new_writing_image_path(def_id: @writing_definition.id) %>
 <%= link_to 'Back', writing_definitions_path %>
+<br>

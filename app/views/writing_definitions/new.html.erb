@@ -1,5 +1,6 @@
 <h1>New Writing Definition</h1>
 
 <%= render 'form', writing_definition: @writing_definition %>
-
-<%= link_to 'Back', writing_definitions_path %>
+<% if @image.present? %>
+	<%=image_tag(@image) %>
+<% end %>

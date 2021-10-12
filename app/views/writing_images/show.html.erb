@@ -2,7 +2,9 @@
 <% if @writing_image.image.persisted? && @writing_image.image.present? %>
     <%= image_tag(@writing_image.image) %>
 <%end%>
-<h1> <%= @corresponding_def.body %> </h1>
+<% if @writing_image.writing_definitions.last.present? %>
+    <h1> <%= @writing_image.writing_definitions.last.body %></h1>
+<% end %>
 
 <%= link_to 'Edit', edit_writing_image_path(@writing_image) %> |
 <%= link_to 'Back', writing_images_path %>
