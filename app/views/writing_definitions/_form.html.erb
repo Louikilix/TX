@@ -12,11 +12,13 @@
   <% end %>
 
   <div class="actions">
+  <p style="text-align:center; font-size: 10px;">
     <% if @image.present? %>
       <%= hidden_field_tag(:image_id, value = @image_id) %>
     <%end%>
-    <%= form.label :body %> 
+     
     <%= form.text_field :body, value: @corresponding_def %> 
-    <%= form.submit %>
+    <%= form.submit "Continuer"  %>
+  </p>
   </div>
 <% end %>

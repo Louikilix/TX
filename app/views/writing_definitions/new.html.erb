@@ -1,6 +1,21 @@
-<h1>New Writing Definition</h1>
+<p id="notice"><%= notice %></p>
+<h1>Définition</h1> <br>
+Une définition aléatoire vous est donné, vous pouvez la modifier si vous le souhaiter
 
-<%= render 'form', writing_definition: @writing_definition %>
+<p style="text-align:center; font-size: 30px;">
+<br>
+<br>
 <% if @image.present? %>
-	<%=image_tag(@image) %>
-<% end %>
+	<%=image_tag (@image), :size => "500x350" %>
+	<% end %>
+<br>
+<br>
+<br>
+<br>
+Changer de défintion ?
+<br>
+<br>
+
+<%= render 'form', writing_definition: @writing_definition, class:".center"  %>
+
+</p>

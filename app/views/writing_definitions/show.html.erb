@@ -1,8 +1,23 @@
 <p id="notice"><%= notice %></p>
-<h1> <%= @writing_definition.body %> </h1>
-<% if @writing_definition.writing_images.last.present? %>
-	<%=image_tag(@writing_definition.writing_images.last.image) %>
-<% end %>
-<%= link_to 'Create a new image linked to your definition', new_writing_image_path(def_id: @writing_definition.id) %>
-<%= link_to 'Back', writing_definitions_path %>
+
+<p style="text-align:center; font-size: 30px;">
 <br>
+<br>
+<%= @writing_definition.body %> 
+<br>
+<br>
+<br>
+<br>
+<% if @writing_definition.writing_images.last.present? %>
+	<%=image_tag (@writing_definition.writing_images.last.image), :size => "500x350",class: "img-responsive" %>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= link_to 'Modifier l\'image associé ?', new_writing_image_path(def_id: @writing_definition.id) %>
+<%= link_to 'Terminé', writing_definitions_path %>
+<br>
+</p>

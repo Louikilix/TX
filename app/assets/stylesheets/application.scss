@@ -45,3 +45,18 @@
 .app-container{
   margin-top: 60px;
 }
+
+
+.hide {
+  display: none;
+}
+
+
+.myDIV:hover + .hide {
+  display: block;
+  color: red;
+  top: 40%;
+  bottom: 40%;
+  opacity: 0;
+  transition:opacity 2s;
+}

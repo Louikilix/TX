@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :writing_images
     end
   get 'home/home'
+  get 'home/index'
   root to: 'home#home'
   resources :writing_definitions
   resources :writing_images
