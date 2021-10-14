@@ -16,9 +16,9 @@
     <%= form.text_field :body %> 
     
     <%= form.select :image_id, options_for_select(WritingImage.all.map{ |i| [i.id, {'data-img-src'=>i.image}] }), include_blank: true %>
-    
+    <br>
     <%= form.label :published %> 
-    <%= form.radio_button :published, true %> yes<br />
+    <%= form.radio_button :published, true %> yes
     <%= form.radio_button :published, false %> no<br />
 
     <%= form.submit %>
