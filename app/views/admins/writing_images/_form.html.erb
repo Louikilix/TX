@@ -13,8 +13,9 @@
 
   <div class="actions">
     <%= form.file_field :image %>
+    <br>
     <%= form.label :published %> 
-    <%= form.radio_button :published, true %> yes<br />
+    <%= form.radio_button :published, true %> yes
     <%= form.radio_button :published, false %> no<br />
     <%= form.submit "save" %>
   </div>
