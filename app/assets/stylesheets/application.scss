@@ -47,15 +47,63 @@
 }
 
 
-.hide {
-  display: none;
+
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+/* Make the image to responsive */
+.image {
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+/* The overlay effect (full height and width) - lays on top of the container and over the image */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #44494b;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  transition: .3s ease;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* When you mouse over the container, the overlay text will "zoom" in display */
+.container:hover .overlay {
+  transform: scale(1.3);
+}
+
+/* Some text inside the overlay, which is positioned in the middle vertically and horizontally */
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 
-.myDIV:hover + .hide {
-  display: block;
-  color: red;
-  top: 40%;
-  bottom: 40%;
-
-}
+.overlay.color-1 { background-color: #df494e;}
+.overlay.color-2 { background-color: #68a5b7;}
+.overlay.color-3 { background-color: #8f978e;}
+.overlay.color-4 { background-color: #d8b6ad;}
+.overlay.color-5 { background-color: #677b94;}
+.overlay.color-6 { background-color: #677b94;}
+.overlay.color-7 { background-color: #66be98;}
+.overlay.color-8 { background-color: #fcd06d;}
+.overlay.color-9 { background-color: #f8a427;}
+.overlay.color-10 { background-color: #d42b14;}
+.overlay.color-11 { background-color: #b45996;}
+.overlay.color-12 { background-color: #0f0c08;}
+.overlay.color-13 { background-color: #11f8e5;}

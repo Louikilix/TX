@@ -1,14 +1,20 @@
 <h1>Créations</h1>
 
-<table class="center">
+<table class="center ">
  <% var = 0 %>
   <tbody>
   <tr>
     <% @writing_definitions.each do |writing_def| %>
    <% if writing_def.writing_images.last.present? %>
-        <td>
-        <div class="myDIV"><%=image_tag (writing_def.writing_images.last.image), :size => "500x350",class: "img-responsive" %></div>
-        <div class="hide"><%=writing_def.body%> </div>
+      <td>
+
+      <div class="container">
+        <%=image_tag (writing_def.writing_images.last.image), :size => "500x350",class: "image" %>
+        <div class="overlay color-<%= (1..13).to_a.sample %>">
+          <div class="text"><%=writing_def.body%></div>
+        </div>
+      </div>
+
          </td>
       
       <% var += 1 %>
