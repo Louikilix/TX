@@ -32,7 +32,6 @@ class Admins::AdminsController < Admins::ApplicationController
     else
       render "edit"
     end
-
   end
 
   def destroy
@@ -42,7 +41,8 @@ class Admins::AdminsController < Admins::ApplicationController
     else
       flash[:error] = t("admins.flash_messages.admins.destroy.error")
     end
-    redirect_to admins_admins_url
+    redirect_to admins_root
   end
- end
+
+end
 

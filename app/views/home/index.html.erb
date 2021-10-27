@@ -1,34 +1,33 @@
-<h1>Créations</h1>
-
-<table class="center ">
- <% var = 0 %>
-  <tbody>
-  <tr>
-    <% @writing_definitions.each do |writing_def| %>
-   <% if writing_def.writing_images.last.present? %>
-      <td>
-
-      <div class="container">
-        <%=image_tag (writing_def.writing_images.last.image), :size => "500x350",class: "image" %>
-        <div class="overlay color-<%= (1..13).to_a.sample %>">
-          <div class="text"><%=writing_def.body%></div>
-        </div>
-      </div>
-
-         </td>
-      
-      <% var += 1 %>
-      <% if var%3 == 0 %>
-         </tr>
-         <tr>
-      <% end %>  
-    <% end %>
-    <%end%>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-
+<%= javascript_include_tag 'application' %>
+<div id="content">
+  <div id="page1" class="page">
+    <div id=log><%= @logs %></div>  
+  </div>
+  <div id="page2" class="page">
+    <h1>Créations</h1>
+    <table class="center ">
+     <% var = 0 %>
+      <tbody>
+        <tr>
+          <% @writing_definitions.each do |writing_def| %>
+            <% if writing_def.writing_images.last.present? %>
+              <td>
+                <div class="container">
+                  <%=image_tag (writing_def.writing_images.last.image), :size => "500x350",class: "image" %>
+                <div class="overlay color-<%= (1..13).to_a.sample %>">
+                  <div class="text"><%=writing_def.body%></div>
+                  </div>
+                </div>
+              </td>
+              <% var += 1 %>
+              <% if var%3 == 0 %>
+                </tr>
+                <tr>
+                  <% end %>  
+              <% end %>  
+          <% end %>
+        </tr>
+      </tbody>
+    </table>        
+  </div>
+</div>

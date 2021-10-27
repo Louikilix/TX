@@ -14,6 +14,52 @@
  *= require_self
  */
 
+
+//////////
+///LOGS///
+//////////
+
+html,body {
+    height: 100%;    
+}
+
+#content {
+    position: relative;
+    height: 100%;
+}
+.page {
+    position: absolute;
+    top:0;
+    height: 100%;  
+    width: 100%;
+}
+
+#page1 {
+  bottom: -300%;
+  -webkit-animation: down-to-up 1.5s linear forwards;
+  animation: down-to-up 1.5s linear forwards;
+}
+
+#page2{
+  display: none;
+}
+
+@keyframes down-to-up{
+    from{top:0}
+    to{top:-300%}
+}
+
+@-webkit-keyframes down-to-up{
+    from{bottom:0}
+    to{bottom:-300%}
+}
+
+#log {
+ color: #FFF;
+ background-color: #000;
+}
+
+
 .navbar {
   position: absolute;
   top: 0;

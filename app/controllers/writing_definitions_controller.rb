@@ -1,13 +1,12 @@
 class WritingDefinitionsController < ApplicationController
-  before_action :set_writing_definition, only: %i[ show edit update destroy ]
-
-  # GET /writing_definitions or /writing_definitions.json
-  def index
-    @writing_definitions = WritingDefinition.all
-  end
+  before_action :set_writing_definition, only: %i[ show  destroy ]
 
   # GET /writing_definitions/1 or /writing_definitions/1.json
   def show
+  end
+
+  def index
+    redirect_to root_url, notice: "This page does not exist."
   end
 
   # GET /writing_definitions/new
@@ -16,15 +15,12 @@ class WritingDefinitionsController < ApplicationController
       @image = WritingImage.find(params[:image]).image
       @image_id = params[:image]
       @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).first.body
+      @writing_definition = WritingDefinition.new
     else
-      @corresponding_def = ""
+      redirect_to root_url, notice: "This page does not exist."
     end
-    @writing_definition = WritingDefinition.new
   end
 
-  # GET /writing_definitions/1/edit
-  def edit
-  end
 
   # POST /writing_definitions or /writing_definitions.json
   def create
@@ -42,6 +38,9 @@ class WritingDefinitionsController < ApplicationController
           # end
           @writing_definition.writing_images << WritingImage.find(params[:image_id])
         end
+
+        #format.html { redirect_to log_log_path(lines: 100) } for later when we will display logs...
+
         format.html { redirect_to @writing_definition, notice: "Writing definition was successfully created." }
         format.json { render :show, status: :created, location: @writing_definition }
       else
