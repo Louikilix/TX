@@ -13,10 +13,30 @@
 
   <div class="actions">
     <%= form.file_field :image %>
+    
     <br>
-    <%= form.label :published %> 
-    <%= form.radio_button :published, true %> yes
-    <%= form.radio_button :published, false %> no<br />
+    <% if @writing_image.writing_definitions.present? && @writing_image.writing_definitions.first.author_signature.present? %>
+      <p> author signature: <%= @writing_image.writing_definitions.first.author_signature %><p>
+    <% end %>
+     
+    <br>
+    <% if @writing_image.writing_definitions.present? && @writing_image.writing_definitions.first.author_published %>
+      <p> the autor agreed that we display his or her production on the home page so that future users can use it to create their own <p>
+      <br>
+      <%= form.label :published %> 
+      <%= form.radio_button :published, true %> yes
+      <%= form.radio_button :published, false %> no<br />
+      <br>
+    <% elsif @writing_image.writing_definitions.present?%>
+      <p> the autor didn't agree that we display his or her production on the home page so that future users can use it to create their own <p>
+    <% else %>
+      <br>
+      <%= form.label :published %> 
+      <%= form.radio_button :published, true %> yes
+      <%= form.radio_button :published, false %> no<br />
+      <br>
+    <% end %>
+
     <%= form.submit "save" %>
   </div>
 

@@ -1,5 +1,5 @@
 class WritingDefinitionsController < ApplicationController
-  before_action :set_writing_definition, only: %i[ show  destroy ]
+  before_action :set_writing_definition, only: %i[ show  destroy edit update]
 
   # GET /writing_definitions/1 or /writing_definitions/1.json
   def show
@@ -14,10 +14,21 @@ class WritingDefinitionsController < ApplicationController
     if params[:image].present?
       @image = WritingImage.find(params[:image]).image
       @image_id = params[:image]
-      @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).first.body
+      if seminar?
+        @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).first.body
+      else
+        @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).first.body
+      end
       @writing_definition = WritingDefinition.new
     else
       redirect_to root_url, notice: "This page does not exist."
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html { update }
+      format.js
     end
   end
 
@@ -40,9 +51,10 @@ class WritingDefinitionsController < ApplicationController
         end
 
         #format.html { redirect_to log_log_path(lines: 100) } for later when we will display logs...
-
         format.html { redirect_to @writing_definition, notice: "Writing definition was successfully created." }
         format.json { render :show, status: :created, location: @writing_definition }
+
+        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @writing_definition.errors, status: :unprocessable_entity }
@@ -54,7 +66,10 @@ class WritingDefinitionsController < ApplicationController
   def update
     respond_to do |format|
       if @writing_definition.update(writing_definition_params)
-        format.html { redirect_to @writing_definition, notice: "Writing definition was successfully updated." }
+        #here is the last step before finish =>
+        @writing_definition.finished = true
+        @writing_definition.save
+        format.html { redirect_to home_index_path, notice: "Writing definition was successfully updated." }
         format.json { render :show, status: :ok, location: @writing_definition }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -80,6 +95,6 @@ class WritingDefinitionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def writing_definition_params
-      params.fetch(:writing_definition, {}).permit(:body, :image_id)
+      params.fetch(:writing_definition, {}).permit(:body, :image_id, :author_published, :author_signature)
     end
 end

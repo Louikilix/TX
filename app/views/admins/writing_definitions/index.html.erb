@@ -23,4 +23,8 @@
 
 <br>
 
+<%= form_with url: "writing_definitions/clean" do |form| %>
+  <%= form.submit "Clean" %>
+<% end %>
+<br>
 <%= link_to 'New Writing Definition', new_admins_writing_definition_path %>

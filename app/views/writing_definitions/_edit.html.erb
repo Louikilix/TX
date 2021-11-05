@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel">IMPORTANT</h4>
+</div>
+<%= form_with(model: @writing_definition) do |form| %>
+  <%= hidden_field_tag(:id, params[:id]) %>
+  <div class="modal-body">
+    <div class="actions">
+      <p> Would you like to sign your production? <p>
+      <%= form.text_field :author_signature %> 
+      
+      <br>
+      <p> Do you agree that we display your production on the home page so that future users can use it to create their own? <p>
+      <%= form.label :author_published %> 
+      <%= form.radio_button :author_published, true %> yes
+      <%= form.radio_button :author_published, false %> no<br />
+      
+
+    </div>
+
+  
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary"><%= form.submit "Continuer"  %></button>
+  </div>
+<% end %>

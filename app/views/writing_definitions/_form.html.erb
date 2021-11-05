@@ -16,9 +16,14 @@
     <% if @image.present? %>
       <%= hidden_field_tag(:image_id, value = @image_id) %>
     <%end%>
-     
-    <%= form.text_field :body, value: @corresponding_def %> 
+
+    <%= form.text_field :body, value: @corresponding_def %>
+
+    
+
     <%= form.submit "Continuer"  %>
+
+    
   </p>
   </div>
 <% end %>

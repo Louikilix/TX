@@ -2,6 +2,7 @@
 <html lang="en">
 
   <head>
+    <title>Writing is</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -26,7 +27,7 @@
   <% if alert %>
     <p class="alert alert-danger"><%= alert %></p>
   <% end %>
-  <%= render 'home/header'%>
+  <%= render 'home/header' unless controller.controller_name == "registrations" || controller.controller_name == "sessions"%>
     <%= yield %>
   </body>
 </html>

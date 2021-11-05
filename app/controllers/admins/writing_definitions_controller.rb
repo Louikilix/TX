@@ -1,5 +1,6 @@
 class Admins::WritingDefinitionsController < Admins::ApplicationController
-  before_action :set_writing_definition, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token, only: %i[clean]
+  before_action :set_writing_definition, only: %i[show edit update destroy]
 
   # GET /writing_definitions or /writing_definitions.json
   def index
@@ -19,9 +20,12 @@ class Admins::WritingDefinitionsController < Admins::ApplicationController
   def edit
   end
 
+
   # POST /writing_definitions or /writing_definitions.json
   def create
     @writing_definition = WritingDefinition.new(writing_definition_params)
+    @writing_definition.author_published = true
+    @writing_definition.finished = true
     respond_to do |format|
       if @writing_definition.save
         format.html { redirect_to [:admins, @writing_definition], notice: "Writing definition was successfully created." }
@@ -55,6 +59,22 @@ class Admins::WritingDefinitionsController < Admins::ApplicationController
     end
   end
 
+  def clean
+    @definitions = WritingDefinition.all.where(finished: false)
+    @definitions.each do |wd|
+      if wd.writing_images.present?
+        wi = wd.writing_images
+        wi.drop(1).each do |i|
+          i.destroy
+        end
+      end
+      wd.destroy
+    end
+    respond_to do |format|
+      format.html { redirect_to admins_writing_definitions_url, notice: "Clean!" }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_writing_definition
@@ -63,6 +83,6 @@ class Admins::WritingDefinitionsController < Admins::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def writing_definition_params
-      params.fetch(:writing_definition, {}).permit(:body, :published)
+      params.fetch(:writing_definition, {}).permit(:body, :published, :author_published, :author_signature)
     end
 end

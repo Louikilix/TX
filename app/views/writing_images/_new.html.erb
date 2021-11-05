@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel2">IMAGE CHANGE</h4>
+</div>
+
+<%= form_with(model: @writing_image) do |form| %>
+  <% if @writing_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@writing_image.errors.count, "error") %> prohibited this writing_image from being saved:</h2>
+
+      <ul>
+        <% @writing_image.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <% if @def_id.present? %>
+      <%= hidden_field_tag(:def_id, value = @def_id) %>
+    <%end%>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary"><%= form.submit "Continuer"  %></button>
+  </div>
+<% end %>

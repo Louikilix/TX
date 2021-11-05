@@ -3,6 +3,7 @@ class WritingImagesController < ApplicationController
 
   # GET /writing_images/1 or /writing_images/1.json
   def show
+    @writing_definition = @writing_image.writing_definitions.first
   end
 
   def index
@@ -10,9 +11,15 @@ class WritingImagesController < ApplicationController
   end
 
   # GET /writing_images/new
+
+
   def new
     if @def_id = params[:def_id]
       @writing_image = WritingImage.new
+      respond_to do |format|
+        format.html {}
+        format.js
+      end
     else
       redirect_to root_url, notice: "This page does not exist."
     end
@@ -23,18 +30,21 @@ class WritingImagesController < ApplicationController
     @writing_image = WritingImage.new(writing_image_params)
 
     respond_to do |format|
-      if @writing_image.save
-        if params[:def_id].present?
-          #SUPPRESSION DE LA RELATION PREALABLE!
-          #INUTILE => Il y en aura max 2 par utulisateurs 
-          # if @writing_image.writing_definitions.first.present?
-          #   wd = @writing_image.writing_definitions.first
-          #   @writing_image.writing_definitions.delete(wd)
-          #   @writing_image.save
-          # end
-          @writing_image.writing_definitions << WritingDefinition.find(params[:def_id])
+      if @writing_image.save && params[:def_id].present?
+        #SUPPRESSION DE LA RELATION PREALABLE!
+        #INUTILE => Il y en aura max 2 par utulisateurs 
+        # if @writing_image.writing_definitions.first.present?
+        #   wd = @writing_image.writing_definitions.first
+        #   @writing_image.writing_definitions.delete(wd)
+        #   @writing_image.save
+        # end
+        if WritingDefinition.find(params[:def_id]).writing_images.count == 2 
+          image_to_delete = WritingDefinition.find(params[:def_id]).writing_images.last
+          image_to_delete.destroy
+          #=> Il y en aura bien max 2 par utulisateurs 
         end
-        format.html { redirect_to home_index_path, notice: "Writing definition was successfully created with your image." }
+        @writing_image.writing_definitions << WritingDefinition.find(params[:def_id])
+        format.html { redirect_to @writing_image.writing_definitions.last, notice: "Writing definition + image was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @writing_image.errors, status: :unprocessable_entity }

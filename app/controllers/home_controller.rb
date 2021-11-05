@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
   def home
-    @writing_images = WritingImage.all.where(published:true)
-    @writing_definitions = WritingDefinition.all
-    @randomImage = WritingImage.all.where(published:true).order(Arel.sql('RANDOM()'))
+    if seminar?
+      @randomImage = WritingImage.joins(:writing_definitions).where("writing_definitions.author_published == true").order(Arel.sql('RANDOM()'))
+    else
+      @randomImage = WritingImage.all.where(published:true).order(Arel.sql('RANDOM()'))
+    end
   end
   
   def index
@@ -12,8 +14,15 @@ class HomeController < ApplicationController
     else
       @logs = `tail -n #{lines} log/development.log`
     end
-    @writing_images = WritingImage.all.where(published:true)
     @writing_definitions = WritingDefinition.all
-    @randomImage = WritingImage.all.where(published:true).order(Arel.sql('RANDOM()'))
   end
+
 end
+
+private
+  def seminar?
+    Admin.all.each do |a|
+      return true if a.seminar
+    end
+    return false
+  end

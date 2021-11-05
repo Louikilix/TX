@@ -12,14 +12,40 @@
   <% end %>
 
   <div class="actions">
+    <br>
     <%= form.label :body %> 
     <%= form.text_field :body %> 
+    <br>
+
+    <br>
+    <% if @writing_definition.author_signature.present? %>
+      <p> author signature: <%= @writing_definition.author_signature %><p>
+    <% end %>
+    <br>
+
+    <br>
+    <% if @writing_definition.new_record? %>
+      <br>
+      <%= form.label :published %> 
+      <%= form.radio_button :published, true %> yes
+      <%= form.radio_button :published, false %> no<br />
+      <br>
+    <% elsif @writing_definition.author_published %>
+      <p> the autor agreed that we display his or her production on the home page so that future users can use it to create their own <p>
+      <br>
+      <%= form.label :published %> 
+      <%= form.radio_button :published, true %> yes
+      <%= form.radio_button :published, false %> no<br />
+      <br>
+    <% else %>
+      <p> the autor didn't agree that we display his or her production on the home page so that future users can use it to create their own <p>
+    <% end %>
+    <br>
     
+    <br>
+    <p> to see if we want to add an image to the def created by an admin: what you see below are image ids <p> <br>
     <%= form.select :image_id, options_for_select(WritingImage.all.map{ |i| [i.id, {'data-img-src'=>i.image}] }), include_blank: true %>
     <br>
-    <%= form.label :published %> 
-    <%= form.radio_button :published, true %> yes
-    <%= form.radio_button :published, false %> no<br />
 
     <%= form.submit %>
 

@@ -1,23 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <p style="text-align:center; font-size: 30px;">
-<br>
-<br>
-<%= @writing_definition.body %> 
-<br>
-<br>
-<br>
-<br>
-<% if @writing_definition.writing_images.last.present? %>
-	<%=image_tag (@writing_definition.writing_images.last.image), :size => "500x350",class: "img-responsive" %>
-<% end %>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<%= link_to 'Modifier l\'image associé ?', new_writing_image_path(def_id: @writing_definition.id) %>
-<%= link_to 'Terminé', home_index_path %>
-<br>
+	<br>
+	<br>
+	<%= @writing_definition.body %> 
+	<br>
+	<br>
+	<br>
+	<br>
+	<% if @writing_definition.writing_images.last.present? %>
+		<%=image_tag (@writing_definition.writing_images.last.image), :size => "500x350",class: "img-responsive" %>
+	<% end %>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<%= link_to 'Modifier l\'image associé ?', new_writing_image_path(def_id: @writing_definition.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+
+	<%= link_to 'Terminé', edit_writing_definition_url(@writing_definition),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+
 </p>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+<br>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
