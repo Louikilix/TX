@@ -19,7 +19,7 @@
             <div class="slideshow-container">
                 <% @writing_definitions.each do |writing_def| %>
                     <% if (writing_def.writing_images.last.present? and not(ary.include?(writing_def.writing_images.last.image.id)))%>
-                        <div class="mySlides fade">
+                        <div class="mySlides fade2">
                             <div class="numbertext"></div>
                             <%=image_tag (writing_def.writing_images.last.image), :size => "500x350" %>
                             <div class ="text">  
