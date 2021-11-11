@@ -1,0 +1,161 @@
+<%= javascript_include_tag 'application' %>
+<div id="content">
+  <div id="page1" class="page">
+    <div id=log><%= @logs %></div>  
+  </div>
+  <div id="page2" class="page">
+    <h1>Créations</h1>
+<form action="index2Bin">
+    <input type="submit" value="Binaire" />
+</form>
+<br>
+<form action="index2">
+    <input type="submit" value="Normal" />
+</form>
+     <% var = 0 
+        ary = Array.new 
+     %>
+    
+            <div class="slideshow-container">
+                <% @writing_definitions.each do |writing_def| %>
+                    <% if (writing_def.writing_images.last.present? and not(ary.include?(writing_def.writing_images.last.image.id)))%>
+                        <div class="mySlides fade">
+                            <div class="numbertext"></div>
+                            <%=image_tag (writing_def.writing_images.last.image), :size => "500x350" %>
+                            <div class ="text">  
+                                <% @writing_definitions.each do |writing_def2| %>
+                                    <% if (writing_def2.writing_images.last.present? and writing_def.writing_images.last.image.id == writing_def2.writing_images.last.image.id)%>
+                                        <%=
+                                       require 'set'
+
+                                        dictionary = Hash.new
+
+                                        dictionary[" "] = " " 
+                                        dictionary["A"] = ".-" 
+                                        dictionary["B"] = "-..." 
+                                        dictionary["C"] = "-.-." 
+                                        dictionary["D"] = "-.." 
+                                        dictionary["E"] = "." 
+                                        dictionary["F"] = "..-." 
+                                        dictionary["G"] = "--." 
+                                        dictionary["H"] = "...." 
+                                        dictionary["I"] = ".." 
+                                        dictionary["J"] = ".---" 
+                                        dictionary["K"] = "-.-" 
+                                        dictionary["L"] = ".-.." 
+                                        dictionary["M"] = "--" 
+                                        dictionary["N"] = "-." 
+                                        dictionary["O"] = "---" 
+                                        dictionary["P"] = ".--." 
+                                        dictionary["Q"] = "--.-" 
+                                        dictionary["R"] = ".-." 
+                                        dictionary["S"] = "..." 
+                                        dictionary["T"] = "-" 
+                                        dictionary["U"] = "..-" 
+                                        dictionary["V"] = "...-" 
+                                        dictionary["W"] = ".--" 
+                                        dictionary["X"] = "-..-" 
+                                        dictionary["Y"] = "-.--" 
+                                        dictionary["Z"] = "--.."
+                                        
+                                        dictionary["a"] = ".-" 
+                                        dictionary["à"] = ".-"
+                                        dictionary["b"] = "-..." 
+                                        dictionary["c"] = "-.-." 
+                                        dictionary["d"] = "-.." 
+                                        dictionary["e"] = "." 
+                                        dictionary["é"] = "." 
+                                        dictionary["f"] = "..-." 
+                                        dictionary["g"] = "--." 
+                                        dictionary["h"] = "...." 
+                                        dictionary["i"] = ".." 
+                                        dictionary["j"] = ".---" 
+                                        dictionary["k"] = "-.-" 
+                                        dictionary["l"] = ".-.." 
+                                        dictionary["m"] = "--" 
+                                        dictionary["n"] = "-." 
+                                        dictionary["o"] = "---" 
+                                        dictionary["p"] = ".--." 
+                                        dictionary["q"] = "--.-" 
+                                        dictionary["r"] = ".-." 
+                                        dictionary["s"] = "..." 
+                                        dictionary["t"] = "-" 
+                                        dictionary["u"] = "..-" 
+                                        dictionary["v"] = "...-" 
+                                        dictionary["w"] = ".--" 
+                                        dictionary["x"] = "-..-" 
+                                        dictionary["y"] = "-.--" 
+                                        dictionary["z"] = "--.."
+
+                                        dictionary["1"] = ".----" 
+                                        dictionary["2"] = "..---" 
+                                        dictionary["3"] = "...--" 
+                                        dictionary["4"] = "....-" 
+                                        dictionary["5"] = "....." 
+                                        dictionary["6"] = "-...." 
+                                        dictionary["7"] = "--..." 
+                                        dictionary["8"] = "---.." 
+                                        dictionary["9"] = "----." 
+                                        dictionary["0"] = "-----"
+
+
+                                        text = writing_def2.body
+                                        puts "text: #{text}"
+
+                                        morse = ""
+
+                                        for c in text.split("")
+
+                                            morse += dictionary[ c.upcase ].to_s + " "
+                                        end
+
+                                        morse
+                                        
+                                        %>
+                                        <br>
+                                        <br>
+
+                                    <% end %>
+                                <% end %>
+                            </div>
+                         </div>
+                        <% ary.push(writing_def.writing_images.last.image.id) %> 
+                  <% end %>
+
+                <% end %>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <!-- Full-width images with number and caption text -->
+
+          
+  </div>
+</div>
+
+ <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+        }
+</script>

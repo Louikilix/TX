@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get 'home/home'
   get 'log/log'
   get 'home/index'
+  get 'home/index2'
+  get 'home/index2Bin'
+  get 'home/index2M'
   
   root to: 'home#home'
   resources :writing_definitions

@@ -116,6 +116,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.1)
     minitest (5.14.4)
+    morse_code (0.1.1)
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
@@ -236,6 +237,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
+  morse_code
   popper_js
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

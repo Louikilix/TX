@@ -14,11 +14,39 @@ class HomeController < ApplicationController
     else
       @logs = `tail -n #{lines} log/development.log`
     end
-    @writing_definitions = WritingDefinition.all
+    @writing_definitions = WritingDefinition.all.order(Arel.sql('created_at DESC'))
   end
 
-end
+  def index2
+    lines = params[:lines] ? params[:lines] : 1000
+    if Rails.env == "production"
+      @logs = `tail -n #{lines} log/production.log`
+    else
+      @logs = `tail -n #{lines} log/development.log`
+    end
+    @writing_definitions = WritingDefinition.all.order(Arel.sql('created_at DESC'))
+  end
 
+  def index2M
+    lines = params[:lines] ? params[:lines] : 1000
+    if Rails.env == "production"
+      @logs = `tail -n #{lines} log/production.log`
+    else
+      @logs = `tail -n #{lines} log/development.log`
+    end
+    @writing_definitions = WritingDefinition.all.order(Arel.sql('created_at DESC'))
+  end
+
+  def index2Bin
+    lines = params[:lines] ? params[:lines] : 1000
+    if Rails.env == "production"
+      @logs = `tail -n #{lines} log/production.log`
+    else
+      @logs = `tail -n #{lines} log/development.log`
+    end
+    @writing_definitions = WritingDefinition.all.order(Arel.sql('created_at DESC'))
+  end
+end
 private
   def seminar?
     Admin.all.each do |a|

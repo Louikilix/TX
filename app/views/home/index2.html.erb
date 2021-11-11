@@ -1,0 +1,75 @@
+<%= javascript_include_tag 'application' %>
+<div id="content">
+  <div id="page1" class="page">
+    <div id=log><%= @logs %></div>  
+  </div>
+  <div id="page2" class="page">
+    <h1>Créations</h1>
+    <form action="index2Bin">
+        <input type="submit" value="Binaire" />
+    </form>
+    <br>
+    <form action="index2M">
+        <input type="submit" value="Morse" />
+    </form>
+     <% var = 0 
+        ary = Array.new 
+     %>
+    
+            <div class="slideshow-container">
+                <% @writing_definitions.each do |writing_def| %>
+                    <% if (writing_def.writing_images.last.present? and not(ary.include?(writing_def.writing_images.last.image.id)))%>
+                        <div class="mySlides fade">
+                            <div class="numbertext"></div>
+                            <%=image_tag (writing_def.writing_images.last.image), :size => "500x350" %>
+                            <div class ="text">  
+                                <% @writing_definitions.each do |writing_def2| %>
+                                    <% if (writing_def2.writing_images.last.present? and writing_def.writing_images.last.image.id == writing_def2.writing_images.last.image.id)%>
+                                        <%=writing_def2.body%>
+                                        <br>
+                                        <br>
+
+                                    <% end %>
+                                <% end %>
+                            </div>
+                         </div>
+                        <% ary.push(writing_def.writing_images.last.image.id) %> 
+                  <% end %>
+
+                <% end %>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <!-- Full-width images with number and caption text -->
+
+          
+  </div>
+</div>
+
+ <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+        }
+</script>
