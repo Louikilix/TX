@@ -4,6 +4,7 @@ $("#modal-window").find(".modal-content").html("<%= j (render 'edit') %>");
 $("#modal-window").modal();
 
 $(".close").click(function () {
+    del = true
     $(window).bind('beforeunload', function() {
         return(false);
     })
