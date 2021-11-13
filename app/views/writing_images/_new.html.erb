@@ -3,7 +3,7 @@
   <h4 class="modal-title" id="myModalLabel2">IMAGE CHANGE</h4>
 </div>
 
-<%= form_with(model: @writing_image) do |form| %>
+<%= form_with(model: @writing_image, id:"image") do |form| %>
   <% if @writing_image.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@writing_image.errors.count, "error") %> prohibited this writing_image from being saved:</h2>

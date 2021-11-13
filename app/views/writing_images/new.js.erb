@@ -1,2 +1,31 @@
+var del = false
+$(window).unbind('beforeunload');
 $("#modal-window").find(".modal-content").html("<%= j (render 'new') %>");
 $("#modal-window").modal();
+
+$(".close").click(function () {
+    $(window).bind('beforeunload', function() {
+        return(false);
+    })
+})
+
+$("a").click(function () {
+    del = false
+});
+
+$('form').submit(function () {
+    del = false
+    $(window).unbind('beforeunload');
+});
+
+$(window).on('unload', function (){
+    if (del) {
+        var id = $("#hidden-form").data("id") 
+        console.log("il est parti");
+        console.log(id)
+        $.ajax({
+          type: "DELETE",
+          url: "/writing_definitions/"+id
+        });
+    }    
+})

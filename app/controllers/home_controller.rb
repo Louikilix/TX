@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def home
     if seminar?
-      @randomImage = WritingImage.joins(:writing_definitions).where("writing_definitions.author_published == true").order(Arel.sql('RANDOM()'))
+      @randomImage = WritingImage.all.where(published:true).order(Arel.sql('RANDOM()')) | WritingImage.joins(:writing_definitions).all.where("writing_definitions.author_published == true").all.order(Arel.sql('RANDOM()'))
     else
       @randomImage = WritingImage.all.where(published:true).order(Arel.sql('RANDOM()'))
     end

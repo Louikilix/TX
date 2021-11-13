@@ -1,27 +1,31 @@
+<div style="font-size: 30px; color: #DC143C">
+    <% if flash[:error] %>
+        <%= flash[:error] %>
+    <% end %>
+</div>
+
+
 <h1>Séléction d'une image</h1>
 <br>
 <p style="font-size: 15px;"> Séléctionner une image qui vous insipre à propos de l'écriture </p>
 <table class="center">
- <% var = 0 %>
-  <tbody>
-  <tr>
-    <% @randomImage.each do |writing_image| %>
-         <td>
-                
-                     <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "350x200"), new_writing_definition_path(image: writing_image.id ) %>
-         </td>
-         
-      <% var += 1 %>
-      <% if var == 4 %>
-         </tr>
-        
-         <tr>
-         <td> </td>
-      <% end %>  
-      <% if var == 6 %>
-        <% break %>
-      <% end %>   
-    <% end %>
-    </tr>
-  </tbody>
+    <% var = 0 %>
+    <tbody>
+        <tr>
+            <% @randomImage.each do |writing_image| %>
+                <td>
+                    <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "350x200"), new_writing_definition_path(image: writing_image.id) %>
+                </td>
+                <% var += 1 %>
+                <% if var == 4 %>
+                    </tr>
+                    <tr>
+                    <td></td>
+                <% end %>  
+                <% if var == 6 %>
+                    <% break %>
+                <% end %>   
+            <% end %>
+        </tr>
+    </tbody>
 </table>

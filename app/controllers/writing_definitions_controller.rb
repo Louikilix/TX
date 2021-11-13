@@ -1,5 +1,5 @@
 class WritingDefinitionsController < ApplicationController
-  before_action :set_writing_definition, only: %i[ show  destroy edit update]
+  before_action :set_writing_definition, only: %i[show  destroy edit update]
 
   # GET /writing_definitions/1 or /writing_definitions/1.json
   def show
@@ -32,29 +32,16 @@ class WritingDefinitionsController < ApplicationController
     end
   end
 
-
   # POST /writing_definitions or /writing_definitions.json
   def create
     @writing_definition = WritingDefinition.new(writing_definition_params)
     respond_to do |format|
       if @writing_definition.save
-
         if params[:image_id].present?
-          #SUPPRESSION DE LA RELATION PREALABLE! 
-          #INUTILE => Il y en aura max 2 par utulisateurs 
-          # if @writing_definition.writing_images.first.present?
-          #   im = @writing_definition.writing_images.first
-          #   @writing_definition.writing_images.delete(im)
-          #   @writing_definition.save
-          # end
           @writing_definition.writing_images << WritingImage.find(params[:image_id])
         end
-
-        #format.html { redirect_to log_log_path(lines: 100) } for later when we will display logs...
-        format.html { redirect_to @writing_definition, notice: "Writing definition was successfully created." }
+        format.html { redirect_to @writing_definition , notice: "Writing definition was successfully created." }
         format.json { render :show, status: :created, location: @writing_definition }
-
-        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @writing_definition.errors, status: :unprocessable_entity }
@@ -66,11 +53,15 @@ class WritingDefinitionsController < ApplicationController
   def update
     respond_to do |format|
       if @writing_definition.update(writing_definition_params)
-        #here is the last step before finish =>
-        @writing_definition.finished = true
-        @writing_definition.save
-        format.html { redirect_to home_index_path, notice: "Writing definition was successfully updated." }
-        format.json { render :show, status: :ok, location: @writing_definition }
+        if params[:not_finish_yet].present?
+          format.html { redirect_to @writing_definition, notice: "Writing definition was successfully updated." }
+        else
+          #here is the last step before finish =>
+          @writing_definition.finished = true
+          @writing_definition.save
+          format.html { redirect_to home_index_path, notice: "Writing definition was successfully finished." }
+        end
+
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @writing_definition.errors, status: :unprocessable_entity }
@@ -80,9 +71,14 @@ class WritingDefinitionsController < ApplicationController
 
   # DELETE /writing_definitions/1 or /writing_definitions/1.json
   def destroy
+    wi = @writing_definition.writing_images
+    wi.drop(1).each do |i|
+      i.destroy
+    end
     @writing_definition.destroy
+    redirect_to home_index_path
     respond_to do |format|
-      format.html { redirect_to writing_definitions_url, notice: "Writing definition was successfully destroyed." }
+      format.html { redirect_to home_index_path, notice: "Writing definition was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -90,7 +86,12 @@ class WritingDefinitionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_writing_definition
-      @writing_definition = WritingDefinition.find(params[:id])
+      if WritingDefinition.exists?(id: params[:id])
+        @writing_definition = WritingDefinition.find(params[:id])
+      else
+        flash[:error] = "An error occured: you left or reloaded the page without saving, your production has been destroyed"
+        redirect_to root_url
+      end
     end
 
     # Only allow a list of trusted parameters through.

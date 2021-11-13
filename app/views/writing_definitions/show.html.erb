@@ -3,7 +3,16 @@
 <p style="text-align:center; font-size: 30px;">
 	<br>
 	<br>
-	<%= @writing_definition.body %> 
+	<%= @writing_definition.body %>
+	<br>
+	<%= form_with(model: @writing_definition, id: "update") do |form| %>
+  	<%= hidden_field_tag(:not_finish_yet, true) %>
+    <div class="actions">
+      <p> Would you like to edit your definition? </p>
+      <%= form.text_field :body %> 
+      <%= form.submit %>
+    </div>
+	<% end %>
 	<br>
 	<br>
 	<br>
@@ -17,11 +26,9 @@
 	<br>
 	<br>
 	<br>
-
 	<%= link_to 'Modifier l\'image associé ?', new_writing_image_path(def_id: @writing_definition.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
 
 	<%= link_to 'Terminé', edit_writing_definition_url(@writing_definition),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
-
 </p>
 
 <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
@@ -36,3 +43,5 @@
     <div class="modal-content"></div>
   </div>
 </div>
+<div id = "hidden-form"; style = "display: none"; data-id="<%= @writing_definition.id %>"></div>
+<button id="fake-button" type="button"></button>
