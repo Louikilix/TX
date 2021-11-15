@@ -1,4 +1,29 @@
+function get_coordinates() {
+    img = document.getElementById("writing-image-ele")
+    writing_definition = document.getElementById('draggable-element')
+    x_img = img.offsetLeft
+    y_img = img.offsetTop
+    img_width = img.offsetWidth
+    img_height = img.offsetHeight
+    param_y = (parseFloat(writing_definition.style.top) - y_img)/img_height
+    param_x = (parseFloat(writing_definition.style.left) - x_img)/img_width
+    document.getElementById('x-t').value = param_x
+    document.getElementById('y-t').value = param_y
+}
+
+function get_size() {
+    img = document.getElementById("writing-image-ele")
+    writing_definition = document.getElementById('draggable-element')
+    img_width = img.offsetWidth
+    img_height = img.offsetHeight
+    param_h = parseFloat(writing_definition.style.height)/img_height
+    param_w = parseFloat(writing_definition.style.width)/img_width
+    document.getElementById('w-t').value = param_w
+    document.getElementById('h-t').value = param_h
+}
+
 var del = false
+
 $(window).unbind('beforeunload');
 $("#modal-window").find(".modal-content").html("<%= j (render 'edit') %>");
 $("#modal-window").modal();
@@ -30,3 +55,7 @@ $(window).on('unload', function (){
         });
     }
 })
+
+get_coordinates()
+get_size()
+

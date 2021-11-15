@@ -12,10 +12,20 @@
           <% @writing_definitions.each do |writing_def| %>
             <% if (writing_def.writing_images.last.present?)%>
               <td>
-                <div class="container">
+                <div class="container w-i"; id=<%="im-"+var.to_s%>>
                   <%=image_tag (writing_def.writing_images.last.image), :size => "500x350",class: "image" %>
-                <div class="overlay color-<%= (1..13).to_a.sample %>">
-                  <div class="text2"><%=writing_def.body%> </div>
+                    <% if (ml = (writing_def.x)).present? %>
+                      <% s = "margin-left: " + (ml*500).to_s + "px" %>
+                      <div class="w-d"; style=<%=s%>; data-x=<%= writing_def.x %>; data-y=<%= writing_def.y %>; data-w=<%= writing_def.w %>; data-h=<%= writing_def.h %>>
+                        <%= s %>
+                      </div>
+                    <%else%>
+                      <div class="w-d"; data-x=<%= writing_def.x %>; data-y=<%= writing_def.y %>; data-w=<%= writing_def.w %>; data-h=<%= writing_def.h %>>
+                        <%= writing_def.body %>
+                      </div>
+                    <%end%>
+                  <div class="overlay color-<%= (1..13).to_a.sample %>">
+                    <div class="text2"><%=writing_def.body%> </div>
                   </div>
                 </div>
               </td>
@@ -23,8 +33,8 @@
               <% if var%3 == 0 %>
                 </tr>
                 <tr>
-                  <% end %>  
               <% end %>  
+            <% end %>
           <% end %>
         </tr>
       </tbody>

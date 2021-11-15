@@ -96,6 +96,6 @@ class WritingDefinitionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def writing_definition_params
-      params.fetch(:writing_definition, {}).permit(:body, :image_id, :author_published, :author_signature)
+      params.fetch(:writing_definition, {}).permit(:body, :image_id, :author_published, :author_signature, :x, :y, :w, :h)
     end
 end
