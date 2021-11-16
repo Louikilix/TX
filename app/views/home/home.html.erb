@@ -89,7 +89,7 @@
         }
         console.log(slide);
 
-        sleep(150)
+        sleep(50)
    })
 
 </script>
@@ -98,7 +98,7 @@
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
-
+    
     var intervalId = window.setInterval(function(){
   /// call your function here
 
@@ -124,7 +124,7 @@
     elem.style.left = Math.round(Math.random() * fullWidth) + "px";
     elem.style.top = Math.round(Math.random() * fullHeight) + "px";
     document.body.appendChild(elem);
-
+    console.log("test")
 }, 500);
     
 
