@@ -281,6 +281,22 @@ ul.navbar-nav {
 }
 
 
+.cercleHome {
+  background-image: url(background.png);
+  background-size: cover;
+  background-repeat: no-repeat;    
+  position:relative;
+  border-radius: 50%;
+  margin-top: 10vh;
+  display: flex;
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+  z-index: 1;
+}
+
 ///////////////////
      ///DRAG///
 ///////////////////
