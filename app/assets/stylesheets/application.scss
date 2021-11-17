@@ -193,9 +193,10 @@ ul.navbar-nav {
 /* Slideshow container */
 .slideshow-container {
   max-width: 500px;
-  position: absolute;
-  margin-left: 220px;
+  position: relative;
+  margin-left: auto;
   margin-right: auto;
+  
   
 }
 
@@ -222,7 +223,9 @@ ul.navbar-nav {
 
 /* Position the "next button" to the right */
 .next {
-  right: 0;
+  left: 450px;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 3px 0 0 3px;
 }
 

@@ -15,23 +15,36 @@
      <% var = 0 
         ary = Array.new 
      %>
+     
     
             <div class="slideshow-container">
                 <% @writing_definitions.each do |writing_def| %>
                     <% if (writing_def.writing_images.last.present? and not(ary.include?(writing_def.writing_images.last.image.id)))%>
                         <div class="mySlides fade2">
-                            <div class="numbertext"></div>
-                            <%=image_tag (writing_def.writing_images.last.image), :size => "500x350" %>
-                            <div class ="text">  
-                                <% @writing_definitions.each do |writing_def2| %>
-                                    <% if (writing_def2.writing_images.last.present? and writing_def.writing_images.last.image.id == writing_def2.writing_images.last.image.id)%>
-                                        <%=writing_def2.body%>
+                            <div class="container w-i">
+                                <%=image_tag (writing_def.writing_images.last.image), :size => "500x350" %>
+                                    <% @writing_definitions.each do |writing_def2| %>
+                                        <% if (writing_def2.writing_images.last.present? and writing_def.writing_images.last.image.id == writing_def2.writing_images.last.image.id)%>
+                                            <div class="w-d"; 
+                                                style=
+                                                "margin-left: <%=writing_def2.x.present? && writing_def2.x != 0 ? ((writing_def2.x*500).to_s + "px") : "0px"%>;
+                                                margin-top: <%=writing_def2.y.present? && writing_def2.y != 0 ? ((writing_def2.y*350).to_s + "px") : "0px"%>;
+                                                width: <%=writing_def2.w.present? && writing_def2.w != 0 ? ((writing_def2.w*500).to_s + "px") : "auto"%>;
+                                                height: <%=writing_def2.h.present? && writing_def2.h != 0 ? ((writing_def2.h*350).to_s + "px") : "auto"%>;
+                                                font-size: <%=writing_def2.font_size.present? && writing_def2.font_size != 0 ? ((writing_def2.font_size*500/1000).to_s + "px") : "auto"%>;
+                                                font-family: <%=writing_def2.font_family.to_s%>;
+                                                position: absolute;
+                                                z-index: 51;"
+                                                >
+                                                <%= writing_def2.body %>
+                                                </div>
+                                            </div>
                                         <br>
                                         <br>
 
                                     <% end %>
                                 <% end %>
-                            </div>
+                            
                          </div>
                         <% ary.push(writing_def.writing_images.last.image.id) %> 
                   <% end %>
