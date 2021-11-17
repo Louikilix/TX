@@ -115,13 +115,24 @@
         elem.style.position = "absolute";
         elem.style.color = "#D3D3D3";
         elem.style.zIndex="-1";
-        elem.style.fontSize = randomIntFromInterval(5, 70).toString()+"px";
+        elem.style.opacity="0";
+        elem.style.fontSize = randomIntFromInterval(5, 50).toString()+"px";
         elem.style.writingMode = mode[randomMode];
         elem.style.fontFamily = font[randomFont];
         elem.style.left = Math.round(Math.random() * fullWidth) + "px";
         elem.style.top = Math.round(Math.random() * fullHeight) + "px";
         document.body.appendChild(elem);
-    }, 500);
+        var steps = 0;
+        var timer = setInterval(function() {
+        steps++;
+        elem.style.opacity = 0.05 * steps;
+        if(steps >= 20) {
+            clearInterval(timer);
+            timer = undefined;
+        }
+    }, 50);
+
+    }, 700);
 </script>
 
 
