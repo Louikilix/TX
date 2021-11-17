@@ -48,7 +48,7 @@
             <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "350x200"), new_writing_definition_path(image: writing_image.id) %>
         </div> 
     <%end%>
-     <% var += 1 %>
+    <% var += 1 %>
     <% if var == 6 %>
         <% break %>
     <% end %>   
@@ -64,22 +64,21 @@
 </body>
 <script>
     function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-}
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+    }
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-   $( "div" ).mousemove(function(event) {
-        
-        n = getRandomInt(6)
-        console.log(n);
-        var slide = document.getElementsByClassName("cercleHome");
-        for(let i=0;i<6;i++){
+    var slide = document.getElementsByClassName("cercleHome");
+    $( "div" ).mousemove(function(event) {
+        imageCount = slide.length;
+        n = getRandomInt(imageCount)
+        for(let i=0;i<imageCount;i++){
             if (i==n){
                 slide[i].style.display = 'flex';
             }else{
@@ -87,11 +86,8 @@
             }
 
         }
-        console.log(slide);
-
         sleep(50)
    })
-
 </script>
 <script>
     function randomIntFromInterval(min, max) { // min and max included 
@@ -100,32 +96,30 @@
 
     
     var intervalId = window.setInterval(function(){
-  /// call your function here
-
-    var fullWidth = window.innerWidth;
-    var fullHeight = window.innerHeight;
-    const font = ["Times New Roman", "Georgia", "Verdana", "Cursive Brush Script MT", "Lucida Handwriting", "Monaco", "Papyrus"];
-    const randomFont = Math.floor(Math.random() * font.length);    
-
-    const text = ["11000011100010010110001101110010011010010111001001100101", "Écrire", "..-.. -.-. .-. .. .-. .","Écrire","Écrire","Écrire","Écrire","Écrire",];
-    const randomText = Math.floor(Math.random() * text.length);    
     
-    const mode = ["vertical-lr","horizontal-tb","horizontal-tb"]
-    const randomMode = Math.floor(Math.random() * mode.length);
+        /// call your function here
 
-    var elem = document.createElement("div");
-    elem.textContent = text[randomText];
-    elem.style.position = "absolute";
-    elem.style.color = "#D3D3D3";
-    elem.style.zIndex="-1";
-    elem.style.fontSize = randomIntFromInterval(5, 70).toString()+"px";
-    elem.style.writingMode = mode[randomMode];
-    elem.style.fontFamily = font[randomFont];
-    elem.style.left = Math.round(Math.random() * fullWidth) + "px";
-    elem.style.top = Math.round(Math.random() * fullHeight) + "px";
-    document.body.appendChild(elem);
-    console.log("test")
-}, 500);
-    
+        var fullWidth = window.innerWidth;
+        var fullHeight = window.innerHeight;
+        const font = ["Times New Roman", "Georgia", "Verdana", "Cursive Brush Script MT", "Lucida Handwriting", "Monaco", "Papyrus"];
+        const randomFont = Math.floor(Math.random() * font.length);    
 
+        const text = ["11000011100010010110001101110010011010010111001001100101", "Écrire", "..-.. -.-. .-. .. .-. .","Écrire","Écrire","Écrire","Écrire","Écrire",];
+        const randomText = Math.floor(Math.random() * text.length);    
+        
+        const mode = ["vertical-lr","horizontal-tb","horizontal-tb"]
+        const randomMode = Math.floor(Math.random() * mode.length);
+
+        var elem = document.createElement("div");
+        elem.textContent = text[randomText];
+        elem.style.position = "absolute";
+        elem.style.color = "#D3D3D3";
+        elem.style.zIndex="-1";
+        elem.style.fontSize = randomIntFromInterval(5, 70).toString()+"px";
+        elem.style.writingMode = mode[randomMode];
+        elem.style.fontFamily = font[randomFont];
+        elem.style.left = Math.round(Math.random() * fullWidth) + "px";
+        elem.style.top = Math.round(Math.random() * fullHeight) + "px";
+        document.body.appendChild(elem);
+    }, 500);
 </script>

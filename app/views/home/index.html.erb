@@ -17,7 +17,7 @@
                     <% if (ml = (writing_def.x)).present? %>
                       <% s = "margin-left: " + (ml*500).to_s + "px" %>
                       <div class="w-d"; style=<%=s%>; data-x=<%= writing_def.x %>; data-y=<%= writing_def.y %>; data-w=<%= writing_def.w %>; data-h=<%= writing_def.h %>>
-                        <%= s %>
+                        <%= writing_def.body %>
                       </div>
                     <%else%>
                       <div class="w-d"; data-x=<%= writing_def.x %>; data-y=<%= writing_def.y %>; data-w=<%= writing_def.w %>; data-h=<%= writing_def.h %>>

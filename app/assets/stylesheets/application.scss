@@ -105,7 +105,9 @@ html,body {
 
 .container {
   position: relative;
-  
+  .w-d {
+    max-width: 500px;
+  }
 }
 
 /* Make the image to responsive */
@@ -304,13 +306,18 @@ ul.navbar-nav {
 #draggable-element, .w-d {
   width: auto;
   height: auto;
-  background: rgba(0,0,0,.5);
-  color: #fff;
+  //background: rgba(0,0,0,.5);
+  //color: #fff;
   padding: 10px 12px;
   cursor: move;
   position: absolute;
   font-size: 1em;
   // important (all position that's not `static`)
+}
+
+#draggable-element:hover, .w-d:hover {
+  background: rgba(0,0,0,.5);
+  color: #fff;
 }
 
 #writing-image {
@@ -336,7 +343,7 @@ ul.navbar-nav {
 
 .wd, .w-d {
   z-index: 9;
-  border: 1px solid #d3d3d3;
+  //border: 1px solid #d3d3d3;
   text-align: center;
   //min-height: 150px;
   //min-width: 300px;
@@ -349,7 +356,7 @@ ul.navbar-nav {
 .wd, .w-d {
   cursor: move;
   position: absolute;
-  /*resize: both; !*enable this to css resize*! */
+  resize: both; /*!*enable this to css resize*! */
   overflow: auto;
 }
 

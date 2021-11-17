@@ -208,7 +208,7 @@ docReady(function() {
     var writing_definition = document.getElementById('draggable-element')
     var writing_image = document.getElementById("writing-image-ele")
     if (writing_definition && writing_image) {
-        writing_definition.style.fontSize = 0.01 * (writing_image.offsetWidth + writing_image.offsetHeight)+ 'px'
+        //writing_definition.style.fontSize = 0.02 * (writing_image.offsetWidth + writing_image.offsetHeight)+ 'px'
         //def position
         w_x = parseFloat(writing_definition.dataset.x)
         w_y = parseFloat(writing_definition.dataset.y)
@@ -217,7 +217,7 @@ docReady(function() {
             y_img = writing_image.offsetTop
             img_width = writing_image.offsetWidth
             img_height = writing_image.offsetHeight
-            writing_definition.style.left = x_img + w_x*img_width + 20 + 'px';
+            writing_definition.style.left = x_img + w_x*img_width + 'px';
             writing_definition.style.top = y_img + w_y*img_height + 'px';
         }
 
