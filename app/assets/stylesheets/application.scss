@@ -210,8 +210,10 @@ ul.navbar-nav {
   cursor: pointer;
   position: absolute;
   top: 200px;
+  margin-left: auto;
   width: auto;
   //margin-top: -22px;
+  z-index: 100;
   padding: 16px;
   color: white;
   font-weight: bold;

@@ -4,7 +4,7 @@
     <div id=log><%= @logs %></div>  
   </div>
   <div id="page2" class="page">
-    <h1>Créations</h1>
+    <h1 style="text-align:center">Créations</h1>
     <form action="index2Bin">
         <input type="submit" value="Binaire" />
     </form>
@@ -15,9 +15,9 @@
      <% var = 0 
         ary = Array.new 
      %>
-     
-    
             <div class="slideshow-container">
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 <% @writing_definitions.each do |writing_def| %>
                     <% if (writing_def.writing_images.last.present? and not(ary.include?(writing_def.writing_images.last.image.id)))%>
                         <div class="mySlides fade2">
@@ -33,27 +33,25 @@
                                                 height: <%=writing_def2.h.present? && writing_def2.h != 0 ? ((writing_def2.h*350).to_s + "px") : "auto"%>;
                                                 font-size: <%=writing_def2.font_size.present? && writing_def2.font_size != 0 ? ((writing_def2.font_size*500/1000).to_s + "px") : "auto"%>;
                                                 font-family: <%=writing_def2.font_family.to_s%>;
-                                                position: absolute;
-                                                z-index: 51;"
+                                                z-index: <%= var %>;"
                                                 >
                                                 <%= writing_def2.body %>
+                                                <% var+=1 %>
                                                 </div>
-                                            </div>
                                         <br>
                                         <br>
 
                                     <% end %>
                                 <% end %>
-                            
+                            </div>
                          </div>
-                        <% ary.push(writing_def.writing_images.last.image.id) %> 
+                    <% ary.push(writing_def.writing_images.last.image.id) %> 
                   <% end %>
 
                 <% end %>
 
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
+            
+        </div>
 
             <!-- Full-width images with number and caption text -->
 
