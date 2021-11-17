@@ -5,16 +5,13 @@
   </div>
   <div id="page2" class="page">
     <h1 style="text-align:center">Créations</h1>
-    <form action="index2Bin">
-        <input type="submit" value="Binaire" />
-    </form>
-    <br>
-    <form action="index2M">
-        <input type="submit" value="Morse" />
-    </form>
      <% var = 0 
         ary = Array.new 
      %>
+     <br>
+     <br>
+     <br>
+     <br>
             <div class="slideshow-container">
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -22,16 +19,16 @@
                     <% if (writing_def.writing_images.last.present? and not(ary.include?(writing_def.writing_images.last.image.id)))%>
                         <div class="mySlides fade2">
                             <div class="container w-i">
-                                <%=image_tag (writing_def.writing_images.last.image), :size => "500x350" %>
+                                <%=image_tag (writing_def.writing_images.last.image), :size => "750x525" %>
                                     <% @writing_definitions.each do |writing_def2| %>
                                         <% if (writing_def2.writing_images.last.present? and writing_def.writing_images.last.image.id == writing_def2.writing_images.last.image.id)%>
                                             <div class="w-d"; 
                                                 style=
-                                                "margin-left: <%=writing_def2.x.present? && writing_def2.x != 0 ? ((writing_def2.x*500).to_s + "px") : "0px"%>;
-                                                margin-top: <%=writing_def2.y.present? && writing_def2.y != 0 ? ((writing_def2.y*350).to_s + "px") : "0px"%>;
-                                                width: <%=writing_def2.w.present? && writing_def2.w != 0 ? ((writing_def2.w*500).to_s + "px") : "auto"%>;
-                                                height: <%=writing_def2.h.present? && writing_def2.h != 0 ? ((writing_def2.h*350).to_s + "px") : "auto"%>;
-                                                font-size: <%=writing_def2.font_size.present? && writing_def2.font_size != 0 ? ((writing_def2.font_size*500/1000).to_s + "px") : "auto"%>;
+                                                "margin-left: <%=writing_def2.x.present? && writing_def2.x != 0 ? ((writing_def2.x*750).to_s + "px") : "0px"%>;
+                                                margin-top: <%=writing_def2.y.present? && writing_def2.y != 0 ? ((writing_def2.y*525).to_s + "px") : "0px"%>;
+                                                width: <%=writing_def2.w.present? && writing_def2.w != 0 ? ((writing_def2.w*750).to_s + "px") : "auto"%>;
+                                                height: <%=writing_def2.h.present? && writing_def2.h != 0 ? ((writing_def2.h*525).to_s + "px") : "auto"%>;
+                                                font-size: <%=writing_def2.font_size.present? && writing_def2.font_size != 0 ? ((writing_def2.font_size*750/1000).to_s + "px") : "auto"%>;
                                                 font-family: <%=writing_def2.font_family.to_s%>;
                                                 z-index: <%= var %>;"
                                                 >
