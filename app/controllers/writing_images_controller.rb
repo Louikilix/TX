@@ -41,7 +41,7 @@ class WritingImagesController < ApplicationController
         if WritingDefinition.find(params[:def_id]).writing_images.count == 2 
           image_to_delete = WritingDefinition.find(params[:def_id]).writing_images.last
           image_to_delete.destroy
-          #=> Il y en aura bien max 2 par utulisateurs 
+          #=> Il y en aura bien max 2 par utulisateurs
         end
         @writing_image.writing_definitions << WritingDefinition.find(params[:def_id])
         format.html { redirect_to @writing_image.writing_definitions.last, notice: "Writing definition + image was successfully created." }

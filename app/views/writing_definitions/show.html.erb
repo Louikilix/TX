@@ -30,7 +30,6 @@
 		      <%= form.text_field :h , id: "h"%>
 		      <h2> font size: </h2>
 		      <%= form.text_field :font_size , id: "font-size"%>
-		      <div style="font-size: <%=@writing_definition.font_size.to_s+"px"%>; font-family: <%=@writing_definition.font_family.to_s%>"> <%=@writing_definition.body%> </div>
 		      <h2> font family: </h2>
       		<%= form.text_field :font_family , id: "font-family"%>
 		      <br>
@@ -76,6 +75,4 @@
   </div>
 </div>
 
-<script>
-	clearInterval(intervalId);
-</script>
+ <div id = "hidden-form"; style = "display: none"; data-id="<%= @writing_definition.id %>"></div>

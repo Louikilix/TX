@@ -58,6 +58,10 @@ class WritingDefinitionsController < ApplicationController
         else
           #here is the last step before finish =>
           @writing_definition.finished = true
+          # To solve the problem Alex mentioned about the fact that a writing def can be linked to 2 writing images:
+          # if @writing_definition.writing_images.count == 2 
+          #   @writing_definition.writing_images.delete(@writing_definition.writing_images.first)
+          # end
           @writing_definition.save
           format.html { redirect_to home_index_path, notice: "Writing definition was successfully finished." }
         end
