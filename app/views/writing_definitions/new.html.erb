@@ -21,7 +21,22 @@ Changer de défintion ?
 <%= render 'form', writing_definition: @writing_definition, class:".center" %>
 </p>
 
-<script>
-	//Bad way =>  error on reload (do not always find intervalId) => need to be modified if we want to keep it
-	//clearInterval(intervalId);
+
+
+<script type='text/javascript'>
+
+(function()
+{
+  if( window.localStorage )
+  {
+    if( !localStorage.getItem('firstLoad') )
+    {
+      localStorage['firstLoad'] = true;
+      window.location.reload();
+    }  
+    else
+      localStorage.removeItem('firstLoad');
+  }
+})();
+
 </script>
