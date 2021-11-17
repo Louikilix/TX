@@ -3,8 +3,18 @@
 		<% if @writing_definition.writing_images.last.present? %>
 			<div id="writing-image">
 				<%=image_tag (@writing_definition.writing_images.last.image), :size => "1000x700",class: "img-responsive", id: "writing-image-ele" %>
-				<div id="draggable-element"; class="wd noselect"; data-x=<%= @writing_definition.x %>; data-y=<%= @writing_definition.y %>; data-w=<%= @writing_definition.w %>; data-h=<%= @writing_definition.h %>>
-				  <%= @writing_definition.body %>
+				<div id="draggable-element"; 
+				class="wd"; 
+				data-x=<%= @writing_definition.x %>; 
+				data-y=<%= @writing_definition.y %>; 
+				data-w=<%= @writing_definition.w %>; 
+				data-h=<%= @writing_definition.h %>; 
+				style=
+				"font-size: <%=@writing_definition.font_size.to_s+"px"%>; 
+				font-family: <%=@writing_definition.font_family.to_s%>;";
+				>
+					  <div class="wd-header noselect"></div>
+					<%= @writing_definition.body %>
 				</div>
 			</div>
 		<% end %>
@@ -18,6 +28,11 @@
 		      <%= form.text_field :y , id: "y"%>
 		      <%= form.text_field :w , id: "w"%>
 		      <%= form.text_field :h , id: "h"%>
+		      <h2> font size: </h2>
+		      <%= form.text_field :font_size , id: "font-size"%>
+		      <div style="font-size: <%=@writing_definition.font_size.to_s+"px"%>; font-family: <%=@writing_definition.font_family.to_s%>"> <%=@writing_definition.body%> </div>
+		      <h2> font family: </h2>
+      		<%= form.text_field :font_family , id: "font-family"%>
 		      <br>
 		      <%= form.submit %>
 		    </div>
@@ -60,4 +75,3 @@
     <div class="modal-content"></div>
   </div>
 </div>
-<div id = "hidden-form"; style = "display: none"; data-id="<%= @writing_definition.id %>"></div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_163739) do
+ActiveRecord::Schema.define(version: 2021_11_17_123057) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2021_11_15_163739) do
     t.float "y", default: 0.0
     t.float "w", default: 0.0
     t.float "h", default: 0.0
+    t.float "font_size"
+    t.string "font_family"
   end
 
   create_table "writing_definitions_images", id: false, force: :cascade do |t|

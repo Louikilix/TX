@@ -18,7 +18,7 @@ function initDragElement() {
     var currentZIndex = 100; //TODO reset z index when a threshold is passed
 
     var wd = wds[0];
-    var header = getHeader(wds);
+    var header = getHeader(wd);
 
     wd.onmousedown = function() {
       this.style.zIndex = "" + ++currentZIndex;
@@ -78,7 +78,8 @@ function initDragElement() {
     }
 
     function getHeader(element) {
-        var headerItems = element;
+        var headerItems = element.getElementsByClassName("wd-header");
+
 
         if (headerItems.length === 1) {
           return headerItems[0];

@@ -14,16 +14,17 @@
               <td>
                 <div class="container w-i"; id=<%="im-"+var.to_s%>>
                   <%=image_tag (writing_def.writing_images.last.image), :size => "500x350",class: "image" %>
-                    <% if (ml = (writing_def.x)).present? %>
-                      <% s = "margin-left: " + (ml*500).to_s + "px" %>
-                      <div class="w-d"; style=<%=s%>; data-x=<%= writing_def.x %>; data-y=<%= writing_def.y %>; data-w=<%= writing_def.w %>; data-h=<%= writing_def.h %>>
-                        <%= writing_def.body %>
-                      </div>
-                    <%else%>
-                      <div class="w-d"; data-x=<%= writing_def.x %>; data-y=<%= writing_def.y %>; data-w=<%= writing_def.w %>; data-h=<%= writing_def.h %>>
-                        <%= writing_def.body %>
-                      </div>
-                    <%end%>
+                    <div class="w-d"; 
+                    style=
+                    "margin-left: <%=writing_def.x.present? && writing_def.x != 0 ? ((writing_def.x*500).to_s + "px") : "0px"%>;
+                    margin-top: <%=writing_def.y.present? && writing_def.y != 0 ? ((writing_def.y*350).to_s + "px") : "0px"%>;
+                    width: <%=writing_def.w.present? && writing_def.w != 0 ? ((writing_def.w*500).to_s + "px") : "auto"%>;
+                    height: <%=writing_def.h.present? && writing_def.h != 0 ? ((writing_def.h*350).to_s + "px") : "auto"%>;
+                    font-size: <%=writing_def.font_size.present? && writing_def.font_size != 0 ? ((writing_def.font_size*500/1000).to_s + "px") : "auto"%>;
+                    font-family: <%=writing_def.font_family.to_s%>;"
+                    >
+                      <%= writing_def.body %>
+                    </div>
                   <div class="overlay color-<%= (1..13).to_a.sample %>">
                     <div class="text2"><%=writing_def.body%> </div>
                   </div>

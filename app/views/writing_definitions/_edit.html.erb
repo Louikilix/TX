@@ -12,8 +12,8 @@
       <br>
       <p> Do you agree that we display your production on the home page so that future users can use it to create their own? <p>
       <%= form.label :author_published %> 
-      <%= form.radio_button :author_published, true %> yes
-      <%= form.radio_button :author_published, false %> no<br />
+      <%= form.radio_button :author_published, true , checked: true%> yes
+      <%= form.radio_button :author_published, false , checked: false%> no<br />
       <%= form.text_field :x , id: "x-t"%>
       <%= form.text_field :y , id: "y-t"%>
       <%= form.text_field :w , id: "w-t"%>

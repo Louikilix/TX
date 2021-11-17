@@ -43,6 +43,9 @@ html,body {
 
 #page2{
   display: none;
+  .w-i{
+    justify-content: left;
+  }
 }
 
 @keyframes down-to-up{
@@ -105,15 +108,18 @@ html,body {
 
 .container {
   position: relative;
+  overflow: hidden;
   .w-d {
-    max-width: 500px;
+    resize: both; /*!*enable this to css resize*! */
+    padding: 10px 12px;
+    cursor: none;
   }
 }
 
 /* Make the image to responsive */
 .image {
-  width: 100%;
-  height: auto;
+  //width: 100%;
+  //height: auto;
   z-index: 1;
 }
 
@@ -306,18 +312,21 @@ ul.navbar-nav {
 #draggable-element, .w-d {
   width: auto;
   height: auto;
-  //background: rgba(0,0,0,.5);
-  //color: #fff;
   padding: 10px 12px;
-  cursor: move;
+  padding-top: 0;
   position: absolute;
   font-size: 1em;
   // important (all position that's not `static`)
+  overflow: hidden;
 }
+
+
+
 
 #draggable-element:hover, .w-d:hover {
   background: rgba(0,0,0,.5);
   color: #fff;
+  overflow: scroll;
 }
 
 #writing-image {
@@ -354,18 +363,8 @@ ul.navbar-nav {
 /*Drgable */
 
 .wd, .w-d {
-  cursor: move;
   position: absolute;
-  resize: both; /*!*enable this to css resize*! */
-  overflow: auto;
-}
-
-.wd-header {
-  padding: 10px;
-  cursor: move;
-  z-index: 10;
-  background-color: #2196f3;
-  color: #fff;
+  //overflow: auto;
 }
 
 /*Resizeable*/
@@ -391,10 +390,10 @@ ul.navbar-nav {
 }
 
 .wd .resizer-both {
-  width: auto;
-  height: auto;
+  width: 5px;
+  height: 5px;
   background: transparent;
-  z-index: 10;
+  //z-index: 10;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -411,4 +410,12 @@ ul.navbar-nav {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+
+.wd-header {
+  //visibility: collapse;
+  height: 20px;
+  cursor: move;
+  z-index: 200;
+  color: #fff;
 }
