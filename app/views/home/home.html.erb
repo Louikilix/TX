@@ -41,11 +41,11 @@
 <% @randomImage.each do |writing_image| %>
     <% if var == 0 %>
             <div class ="cercleHome" style = "display : flex;"> 
-            <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "350x200"), new_writing_definition_path(image: writing_image.id) %>
+            <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "390x270"), new_writing_definition_path(image: writing_image.id) %>
         </div> 
     <% else %>  
         <div class ="cercleHome" style = "display : none;"> 
-            <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "350x200"), new_writing_definition_path(image: writing_image.id) %>
+            <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "390x270"), new_writing_definition_path(image: writing_image.id) %>
         </div> 
     <%end%>
     <% var += 1 %>
