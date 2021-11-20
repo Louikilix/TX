@@ -1,10 +1,16 @@
+
+<body style=" background-color: #171515;">
 <%= javascript_include_tag 'application' %>
 <div id="content">
   <div id="page1" class="page">
     <div id=log><%= @logs %></div>  
   </div>
+ 
   <div id="page2" class="page">
-    <h1 style="text-align:center">Créations</h1>
+    <div id="back" style="word-break: break-all; font-size: 20px; color: #D3D3D3; z-index: -1; position:absolute;"> </div>
+    <br>
+    <br>
+    <p style="text-align: center;"><span style="font-size: 30px;background-color: white; color: black; text-align: center;font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 1;">Créations</span></p>
      <% var = 0 
         ary = Array.new 
      %>
@@ -55,7 +61,7 @@
           
   </div>
 </div>
-
+</body>
  <script>
         var slideIndex = 1;
         showSlides(slideIndex);
@@ -80,4 +86,32 @@
         }
         slides[slideIndex-1].style.display = "block";
         }
+</script>
+
+<script>
+    function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+  
+    var i = 0
+    var arr = "";
+     <% @writing_definitions.each do |writing_def| %>
+        arr += "<%=writing_def.body%>";
+        arr += ". "
+     <%end%>
+
+
+    console.log(arr);
+    var intervalId = window.setInterval(function(){
+        document.getElementById("back").innerHTML += arr[i];
+        i++;
+        if (i >= arr.length){
+            i = 0;
+            
+        }
+        $("back").load(" back > *");
+        console.log(document.getElementById("back").innerHTML);
+        
+    }, 20);
 </script>
