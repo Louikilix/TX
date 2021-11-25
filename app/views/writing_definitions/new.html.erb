@@ -1,10 +1,15 @@
+
+<body style=" background-color: #171515; color: white;">
 <p id="notice"><%= notice %></p>
-<h1>Définition</h1> <br>
+<p style="text-align: center;"><span style="font-size: 30px;background-color: white; color: black; text-align: center;font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 1;">Définition</span></p>
 
-<p>Une définition aléatoire vous est donnée, vous pouvez la modifier si vous le souhaitez:</p>
-<p>Si cette definition ne vous plait pas, recharchez!</p>
-<p>Une fois votre définition créée, vous pourrez modifier l'image associée</p>
-
+<br>
+<br>
+<div style="font-size: 19px; color: white;font-family: 'Times New Roman';text-align: center;">
+Une définition aléatoire vous est donnée, vous pouvez la modifier si vous le souhaitez:<br>
+Si cette definition ne vous plait pas, <href style = "color: red;" onClick="window.location.reload();">recharchez!</href><br>
+Vous aurez la possibilité de modifier cette définition ainsi que l'image associé<br>
+</div>
 <p style="text-align:center; font-size: 30px;">
 <br>
 <br>
@@ -13,15 +18,19 @@
 	<% end %>
 <br>
 <br>
+
+<div style="font-size: 20px;text-align: center;">
+Définition proposé:
+</div>
 <br>
-<br>
-Changer de défintion ?
-<br>
+<div style="text-align: center;font-size: 25px;">
+<%= @corresponding_def%>
+</div>
 <br>
 <%= render 'form', writing_definition: @writing_definition, class:".center" %>
 </p>
 
-
+</body>
 
 <script type='text/javascript'>
 
@@ -38,5 +47,6 @@ Changer de défintion ?
       localStorage.removeItem('firstLoad');
   }
 })();
-
+var x = document.getElementById("writing_definition_body");
+x.style.display = "none";
 </script>
