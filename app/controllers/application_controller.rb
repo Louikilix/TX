@@ -12,5 +12,11 @@ class ApplicationController < ActionController::Base
         admins_root_path(current_admin) # your path
       end
 
+      def seminar?
+        Admin.all.each do |a|
+          return true if a.seminar
+        end
+        return false
+      end
 
 end

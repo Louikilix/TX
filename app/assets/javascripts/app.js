@@ -144,6 +144,7 @@ function initResizeElement() {
         document.documentElement.removeEventListener("mousemove", doDrag, false);
         document.documentElement.removeEventListener("mouseup", stopDrag, false);
     }
+
 }
 
 
@@ -231,11 +232,36 @@ docReady(function() {
             writing_definition.style.width = w_w*img_width + 'px';
             writing_definition.style.height = w_h*img_height + 'px';
         }
-
         initDragElement();
         initResizeElement();
     }
 
- 
+    /************************************magnifying glass***************************************************/
+    
+    const pointer1 = document.querySelector('.pointer-1');
+    const pointer2 = document.querySelector('.pointer-2');
+    if (pointer1 && pointer2){
+        document.getElementById('hidden-part-1').addEventListener('mousemove', (e) => {
+            pointer1.style.visibility = "visible"
+            pointer1.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
+        });
+        document.getElementById('hidden-part-1').addEventListener('mouseout', (e) => {
+            pointer1.style.visibility = "hidden"
+        });
+        document.getElementById('hidden-part-2').addEventListener('mousemove', (e) => {
+            pointer2.style.visibility = "visible"
+            pointer2.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
+        });
+        document.getElementById('hidden-part-2').addEventListener('mouseout', (e) => {
+            pointer2.style.visibility = "hidden"
+        });
+        $('.reload-link').click(function() {
+            location.reload();
+        })
+    }
+
+    /************************************home page***************************************************/
+
 });
+
 

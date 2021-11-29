@@ -47,10 +47,3 @@ class HomeController < ApplicationController
     @writing_definitions = WritingDefinition.all.order(Arel.sql('created_at DESC'))
   end
 end
-private
-  def seminar?
-    Admin.all.each do |a|
-      return true if a.seminar
-    end
-    return false
-  end

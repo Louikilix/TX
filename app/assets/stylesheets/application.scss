@@ -28,6 +28,7 @@ html,body {
     position: relative;
     height: 100%;
 }
+
 .page {
     position: absolute;
     top:0;
@@ -324,9 +325,8 @@ ul.navbar-nav {
   font-size: 1em;
   // important (all position that's not `static`)
   overflow: hidden;
+  color: rgb(0,0,0);
 }
-
-
 
 
 #draggable-element:hover, .w-d:hover {
@@ -354,7 +354,6 @@ ul.navbar-nav {
 #x, #y, #x0, #y0, #w, #h, #w0, #h0, #x-t, #y-t, #w-t, #h-t {
   display: none;
 }
-
 
 .wd, .w-d {
   z-index: 9;
@@ -424,4 +423,18 @@ ul.navbar-nav {
   cursor: move;
   z-index: 200;
   color: #fff;
+}
+
+
+//////////
+//INPUT///
+//////////
+
+input{
+  font-size: 30px;
+  background-color: white;
+  color: black;
+  font-family: 'Lucida Console', 'Courier New', monospace;
+  position: relative;
+  z-index: 1;
 }

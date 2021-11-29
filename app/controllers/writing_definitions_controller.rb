@@ -15,9 +15,11 @@ class WritingDefinitionsController < ApplicationController
       @image = WritingImage.find(params[:image]).image
       @image_id = params[:image]
       if seminar?
-        @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).first.body
+        @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).first
+        @writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).limit(30)
       else
-        @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).first.body
+        @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).first
+        @writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).limit(30)
       end
       @writing_definition = WritingDefinition.new
     else
@@ -40,7 +42,7 @@ class WritingDefinitionsController < ApplicationController
         if params[:image_id].present?
           @writing_definition.writing_images << WritingImage.find(params[:image_id])
         end
-        format.html { redirect_to @writing_definition , notice: "Writing definition was successfully created." }
+        format.html { redirect_to @writing_definition }# , notice: "Writing definition was successfully created." }
         format.json { render :show, status: :created, location: @writing_definition }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,7 +56,7 @@ class WritingDefinitionsController < ApplicationController
     respond_to do |format|
       if @writing_definition.update(writing_definition_params)
         if params[:not_finish_yet].present?
-          format.html { redirect_to @writing_definition, notice: "Writing definition was successfully updated." }
+          format.html { redirect_to @writing_definition }#, notice: "Writing definition was successfully updated." }
         else
           #here is the last step before finish =>
           @writing_definition.finished = true

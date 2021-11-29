@@ -15,8 +15,10 @@
     <% if @image.present? %>
       <%= hidden_field_tag(:image_id, value = @image_id) %>
     <%end%>
-    <%= form.text_field :body, value: @corresponding_def %>
-    <%= form.submit "Continuer"  %>
+    <%= form.text_field(:body, value: @corresponding_def.body, style: "display: none") %>
+    <div style="font-size: 30px;background-color: white; color: black; font-family: 'Lucida Console', 'Courier New'">
+      <%= form.submit "Continuer"  %>
+    </div>
   </p>
   </div>
 <% end %>

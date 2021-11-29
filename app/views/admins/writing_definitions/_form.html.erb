@@ -20,6 +20,9 @@
     <br>
     <% if @writing_definition.author_signature.present? %>
       <p> author signature: <%= @writing_definition.author_signature %><p>
+    <%else%>
+      <%= form.label :author_signature %> 
+      <%= form.text_field :author_signature %>
     <% end %>
     <br>
 
