@@ -205,7 +205,7 @@ docReady(function() {
         return "Are you sure you want to leave this page without saving?";
     }
 
-/************************************DRAGGING***************************************************/
+    /************************************DRAGGING***************************************************/
 
     var writing_definition = document.getElementById('draggable-element')
     var writing_image = document.getElementById("writing-image-ele")
