@@ -8,6 +8,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"> <%= link_to 'Writing_definitions', admins_writing_definitions_path, class:"nav-link" %></li>
         <li class="nav-item"> <%= link_to 'Writing_images', admins_writing_images_path, class:"nav-link" %></li>
+        <li class="nav-item"> <%= link_to 'Writing_informations', admins_writing_informations_path, class:"nav-link" %></li>
         <li class=admin-align-right>
           <% if admin_signed_in? %>
             <div class="navbar-brand">Logged in as <strong><%= current_admin.email %></strong>.</div>

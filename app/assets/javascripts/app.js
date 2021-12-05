@@ -168,8 +168,11 @@ docReady(function() {
 
     var del = false
 
-    var stepToBlock = document.getElementById("writing_definitions_show");
-    if(stepToBlock != null) {
+    var stepToBlock1 = document.getElementById("writing_definitions_show");
+    // in case of image modification problem implying a redirection to the writing_images_create page:
+    var stepToBlock2 = document.getElementById("writing_images_create");
+
+    if(stepToBlock1 != null || stepToBlock2 != null) {
         $(window).bind('beforeunload', function() {
             //following two lines will cause the browser to ask the user if they
             //want to leave. The text of this dialog is controlled by the browser.

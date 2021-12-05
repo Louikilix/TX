@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Writing Informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text1</th>
+      <th>Text2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @writing_informations.each do |writing_information| %>
+      <tr>
+        <td><%= writing_information.text1 %></td>
+        <td><%= writing_information.text2 %></td>
+        <td><%= link_to 'Show', writing_information %></td>
+        <td><%= link_to 'Edit', edit_writing_information_path(writing_information) %></td>
+        <td><%= link_to 'Destroy', writing_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Writing Information', new_writing_information_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admins Writing Informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text1</th>
+      <th>Text2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins_writing_informations.each do |admins_writing_information| %>
+      <tr>
+        <td><%= admins_writing_information.text1 %></td>
+        <td><%= admins_writing_information.text2 %></td>
+        <td><%= link_to 'Show', [:admins, admins_writing_information] %></td>
+        <td><%= link_to 'Edit', edit_admins_writing_information_path(admins_writing_information) %></td>
+        <td><%= link_to 'Destroy', [:admins, admins_writing_information], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admins Writing Information', new_admins_writing_information_path %>

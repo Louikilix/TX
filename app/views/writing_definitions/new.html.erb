@@ -3,14 +3,7 @@
 <div class= "exploring" >
   <div id="hidden-part-1">
     <div class="pointer-1">
-      <% k= 0 %>
-      <% for i in 0..30 %>
-        <% if k == @writing_definitions.count/2 - 1 %>
-          <% k = 0 %>
-        <%end%>
-        <%= @writing_definitions[k].body %>
-        <%k+=1%>
-      <%end%>
+      <%= @writing_information_text_1 %>
     </div>
   </div>
 
@@ -47,14 +40,7 @@
 
   <div id="hidden-part-2">
     <div class="pointer-2">
-      <% k= 30 %>
-      <% for i in 30..50 %>
-        <% if k >= @writing_definitions.count - 1 %>
-          <% k = @writing_definitions.count/2 - 1 %>
-        <%end%>
-        <%= @writing_definitions[k].body %>
-        <%k+=1%>
-      <%end%>
+      <%= @writing_information_text_2 %>
     </div>
   </div>
 </div>
