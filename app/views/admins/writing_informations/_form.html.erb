@@ -1,0 +1,27 @@
+<%= form_with(model: admins_writing_information) do |form| %>
+  <% if admins_writing_information.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admins_writing_information.errors.count, "error") %> prohibited this admins_writing_information from being saved:</h2>
+
+      <ul>
+        <% admins_writing_information.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :text1 %>
+    <%= form.text_area :text1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text2 %>
+    <%= form.text_area :text2 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

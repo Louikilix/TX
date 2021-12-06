@@ -16,10 +16,20 @@ class WritingDefinitionsController < ApplicationController
       @image_id = params[:image]
       if seminar?
         @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).first
-        @writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).limit(30)
+        #for the hidden texts:
+        #before we used defs:
+        #@writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).limit(30)
+        #now we use this
+        @writing_information_text_1 = WritingInformation.last.text1
+        @writing_information_text_2 = WritingInformation.last.text2
       else
         @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).first
-        @writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).limit(30)
+        #for the hidden texts:
+        #before we used defs:
+        #@writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).limit(30)
+        #now we use this
+        @writing_information_text_1 = WritingInformation.last.text1
+        @writing_information_text_2 = WritingInformation.last.text2
       end
       @writing_definition = WritingDefinition.new
     else

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text1:</strong>
+  <%= @writing_information.text1 %>
+</p>
+
+<p>
+  <strong>Text2:</strong>
+  <%= @writing_information.text2 %>
+</p>
+
+<%= link_to 'Edit', edit_writing_information_path(@writing_information) %> |
+<%= link_to 'Back', writing_informations_path %>

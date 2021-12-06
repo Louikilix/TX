@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins, :controllers => { :registrations => 'admins/registrations' }
   namespace :admins do
     root to: "admins#index"
@@ -7,8 +8,8 @@ Rails.application.routes.draw do
     resources :writing_definitions #do
     #   resources :writing_images, :only => [:create, :destroy]
     # end
-
     resources :writing_images
+    resources :writing_informations
   end
 
   post '/admins/writing_definitions/clean'
@@ -23,6 +24,6 @@ Rails.application.routes.draw do
   root to: 'home#home'
   resources :writing_definitions
   resources :writing_images
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #resources :writing_informations
   
 end

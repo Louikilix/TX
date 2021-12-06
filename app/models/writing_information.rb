@@ -1,0 +1,2 @@
+class WritingInformation < ApplicationRecord
+end

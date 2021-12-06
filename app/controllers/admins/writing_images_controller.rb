@@ -1,5 +1,5 @@
 class Admins::WritingImagesController < Admins::ApplicationController
-before_action :set_writing_image, only: %i[ show edit update destroy ]
+  before_action :set_writing_image, only: %i[ show edit update destroy ]
 
   # GET /writing_images or /writing_images.json
   def index
