@@ -332,6 +332,9 @@ ul.navbar-nav {
 #draggable-element:hover, .w-d:hover {
   background: rgba(0,0,0,.5);
   color: #fff;
+}
+
+#draggable-element:hover {
   overflow: scroll;
 }
 
