@@ -1,8 +1,12 @@
+<br>
+<br>
+<br>
 <div class = "show-container">
 	<div class = "show-final-container">
 		<div class = "definition-container">
 			<% if @writing_definition.writing_images.last.present? %>
 				<div id="writing-image">
+				<br>
 					<%=image_tag (@writing_definition.writing_images.last.image), :size => "1000x700",class: "img-responsive", id: "writing-image-ele" %>
 					<div id="draggable-element"; 
 					class="wd"; 

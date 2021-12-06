@@ -1,42 +1,45 @@
 <body style=" background-color: #171515;">
-<div style="font-size: 30px; color: #DC143C">
-    <% if flash[:error] %>
-        <%= flash[:error] %>
-    <% end %>
-</div>
-
-<br>
-
-<p style="text-align: center;"><span style="font-size: 30px; padding: 0 10px; background-color: white; color: black; text-align: center;font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 1;">  🇫🇷 Séléctionnez une image qui vous insipire à propos de l'écriture...</span></p>
-<br>
-<p style="text-align: center;"><span style="font-size: 30px; padding: 0 10px; background-color: white; color: black; text-align: center;font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 1;">  🇬🇧 Select an image that inspires you about writing....</span></p>
-
-<br>
-<br>
-<br>
-<div class = "ouf">
-    <% var = 0 %>
-    <% @randomImage.each do |writing_image| %>
-        <% if var == 0 %>
-                <div class ="cercleHome" style = "display : flex;"> 
-                <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "390x270"), new_writing_definition_path(image: writing_image.id) %>
-            </div> 
-        <% else %>  
-            <div class ="cercleHome" style = "display : none;"> 
-                <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "390x270"), new_writing_definition_path(image: writing_image.id) %>
-            </div> 
+    
+    <div style="font-size: 30px; color: #DC143C">
+        <% if flash[:error] %>
+            <%= flash[:error] %>
+        <% end %>
+    </div>
+    <br>
+    <p style="text-align: center;"><span class="Title">  🇫🇷 Séléctionnez une image qui vous insipire à propos de l'écriture...</span></p>
+    <br>
+    <p style="text-align: center;"><span class="Title">  🇬🇧 Select an image that inspires you about writing....</span></p>
+    <br>
+    <br>
+    <br>
+    <div class = "ouf">
+        <% var = 0 %>
+        <% @randomImage.each do |writing_image| %>
+            <% if var == 0 %>
+                    <div class ="cercleHome" style = "display : flex;"> 
+                    <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "390x270"), new_writing_definition_path(image: writing_image.id) %>
+                </div> 
+            <% else %>  
+                <div class ="cercleHome" style = "display : none;"> 
+                    <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "390x270"), new_writing_definition_path(image: writing_image.id) %>
+                </div> 
+            <%end%>
+            <% var += 1 %>
+            <% if var == 6 %>
+                <% break %>
+            <% end %>   
         <%end%>
-        <% var += 1 %>
-        <% if var == 6 %>
-            <% break %>
-        <% end %>   
-    <%end%>
-</div>
-<br>
-<br>
-<form action=home/index2 align="right" style="font-size: 30px; font-family: 'Lucida Console', 'Courier New', monospace; margin-right: 80px;">
-    <input type="submit" value="Collection" />
-</form>
+    </div>
+    <br>
+    <br>
+    <form action=home/index2 align="right" style="font-size: 30px; font-family: 'Lucida Console', 'Courier New', monospace; margin-right: 80px;">
+        <input type="submit" value="Collection" />
+    </form>
+<div class= "splash">
+        <div class="fade-in">
+             Écrire c'est... 
+         </div>
+    </div>
 </body>
 <script>
     function sleep(milliseconds) {
@@ -110,6 +113,26 @@
 
     }, 700);
 </script>
+<script>
 
+$(document).ready(function(){
+    var splash = document.getElementsByClassName("splash");
+    setTimeout(() => {
+        var steps = 0;
+        var timer = setInterval(function() {
+        steps++;
+        splash[0].style.opacity = 1-(steps/100);
+        if(steps > 100) {
+            clearInterval(timer);
+            splash[0].remove();
+        }
+    }, 10);
+       
+    }, 2000);
+    
+
+
+})
+</script>
 
 
