@@ -18,6 +18,7 @@ class HomeController < ApplicationController
   end
 
   def index2
+    id = params[:id]
     lines = params[:lines] ? params[:lines] : 1000
     if Rails.env == "production"
       @logs = `tail -n #{lines} log/production.log`
