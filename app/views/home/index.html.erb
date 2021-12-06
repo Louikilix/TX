@@ -6,14 +6,25 @@
   <div id="page2" class="page">
     <h1>Créations</h1>
     <table class="center ">
-     <% var = 0 %>
+     <% var = 0
+        idImage = 0 
+        tabId = Array.new 
+        h = Hash[]
+      %>
       <tbody>
         <tr>
           <% @writing_definitions.each do |writing_def| %>
             <% if (writing_def.writing_images.last.present?)%>
               <td>
                 <div class="container w-i"; id=<%="im-"+var.to_s%>>
-                  <%=image_tag (writing_def.writing_images.last.image), :size => "500x350",class: "image" %>
+                <%if not(tabId.include?(writing_def.writing_images.last.image.id))
+                    idImage+=1
+                    h[writing_def.writing_images.last.image.id] = idImage
+                    tabId.push(writing_def.writing_images.last.image.id)
+                  end
+                %>
+                
+                  <%= link_to image_tag(writing_def.writing_images.last.image, size: "500x350",class: "image"), home_index2_path(id:  h[writing_def.writing_images.last.image.id]) %>
                     <div class="w-d"; 
                     style=
                     "margin-left: <%=writing_def.x.present? && writing_def.x != 0 ? ((writing_def.x*500).to_s + "px") : "0px"%>;

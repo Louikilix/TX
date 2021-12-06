@@ -4,6 +4,7 @@
         <%= flash[:error] %>
     <% end %>
 </div>
+<<<<<<< Updated upstream
 
 
 <br>
@@ -39,6 +40,10 @@
 <br>
 -->
 
+=======
+<br>
+<p style="text-align: center;"><span style="font-size: 30px;background-color: white; color: black; text-align: center;font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 100;"> Sélctionnez une image qui vous inspire à propos de l'écriture...</span></p>
+>>>>>>> Stashed changes
 <br>
 <br>
 <div class = "ouf">
@@ -64,8 +69,6 @@
 <form action=home/index2 align="right" style="font-size: 30px; font-family: 'Lucida Console', 'Courier New', monospace; margin-right: 80px;">
     <input type="submit" value="Collection" />
 </form>
-
-
 </body>
 <script>
     function sleep(milliseconds) {
@@ -99,7 +102,6 @@
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
-    
     var intervalId = window.setInterval(function(){
     
         /// call your function here
@@ -109,7 +111,7 @@
         const font = ["Times New Roman", "Georgia", "Verdana", "Cursive Brush Script MT", "Lucida Handwriting", "Monaco", "Papyrus"];
         const randomFont = Math.floor(Math.random() * font.length);    
 
-        const text = ["11000011100010010110001101110010011010010111001001100101","11000011100010010110001101110010011010010111001001100101","11000011100010010110001101110010011010010111001001100101", "Écrire", "..-.. -.-. .-. .. .-. .", "..-.. -.-. .-. .. .-. .", "..-.. -.-. .-. .. .-. .", "..-.. -.-. .-. .. .-. .","Écrire","Écrire","Écrire","write", "schreiben", "escribir", "scrivere", "írni", "om te skryf ", "napsat", "kirjutama", "schrijven", "escriure", "at skrive", "pisati", "para magsulat", "kirjoittaa", "escrever", "a scrie", "att skriva", "yazmak", "pisać", "ysgrifennu", "ekri", "scríobh", "biex tikteb", "rakstīt", "write", "write", "write", "schreiben", "escribir", "scrivere", "írni"];
+        const text = ["11000011100010010110001101110010011010010111001001100101","11000011100010010110001101110010011010010111001001100101","11000011100010010110001101110010011010010111001001100101", "Écrire", "..-.. -.-. .-. .. .-. .", "..-.. -.-. .-. .. .-. .", "..-.. -.-. .-. .. .-. .", "..-.. -.-. .-. .. .-. .","Écrire","Écrire","Écrire","write", "schreiben", "escribir", "scrivere", "írni", "om te skryf ", "napsat", "kirjutama", "schrijven", "escriure", "at skrive", "pisati", "para magsulat", "kirjoittaa", "escrever", "a scrie", "att skriva", "yazmak", "pisać", "ysgrifennu", "ekri", "scríobh", "biex tikteb", "rakstīt", "write", "write", "write", "schreiben", "escribir", "scrivere", "írni","ለመፃፍ", "寫", "Да пишеш", "يكتب", "写", "Mo volavola", "نوشتن", "લખવુ", "Untuk menulis", "ᑎᑎᕋᕐᓂᕐᒧᑦ", "សរសេរ", "書きます", "ಬರೆಯಲು", "לכתוב", "Жазу", "लिखने के लिए", "쓰기에", "نووسین", "Rašyti", "ਲਿਖਣ ਲਈ", "Написать", "Ina ia tusi", "எழுதுவதற்கு", "Писати", "เขียน", "لکھنا", "Để viết"];
         const randomText = Math.floor(Math.random() * text.length);    
         
         const mode = ["vertical-lr","horizontal-tb","horizontal-tb"]
@@ -119,9 +121,10 @@
         elem.textContent = text[randomText];
         elem.style.position = "absolute";
         elem.style.color = "#D3D3D3";
-        elem.style.zIndex="-1";
         elem.style.opacity="0";
-        elem.style.fontSize = randomIntFromInterval(5, 50).toString()+"px";
+        var s = randomIntFromInterval(5, 50);
+        elem.style.zIndex=s;
+        elem.style.fontSize = s.toString()+"px";
         elem.style.writingMode = mode[randomMode];
         elem.style.fontFamily = font[randomFont];
         elem.style.left = Math.round(Math.random() * fullWidth) + "px";
@@ -130,7 +133,7 @@
         var steps = 0;
         var timer = setInterval(function() {
         steps++;
-        elem.style.opacity = 0.05 * steps;
+        elem.style.opacity = (s/1000) * steps;
         if(steps >= 20) {
             clearInterval(timer);
             timer = undefined;
