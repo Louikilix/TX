@@ -4,8 +4,6 @@
         <%= flash[:error] %>
     <% end %>
 </div>
-<<<<<<< Updated upstream
-
 
 <br>
 
@@ -13,37 +11,7 @@
 <br>
 <p style="text-align: center;"><span style="font-size: 30px; padding: 0 10px; background-color: white; color: black; text-align: center;font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 1;">  🇬🇧 Select an image that inspires you about writing....</span></p>
 
-
-<!--
-<table class="center">
-    <% var = 0 %>
-    <tbody>
-        <tr>
-            <% @randomImage.each do |writing_image| %>
-                <td>
-                    <%= link_to (image_tag (writing_image.image), class: "img-responsive", :size => "350x200"), new_writing_definition_path(image: writing_image.id) %>
-                </td>
-                <% var += 1 %>
-                <% if var == 4 %>
-                    </tr>
-                    <tr>
-                    <td></td>
-                <% end %>  
-                <% if var == 6 %>
-                    <% break %>
-                <% end %>   
-            <% end %>
-        </tr>
-    </tbody>
-</table>
 <br>
-<br>
--->
-
-=======
-<br>
-<p style="text-align: center;"><span style="font-size: 30px;background-color: white; color: black; text-align: center;font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 100;"> Sélctionnez une image qui vous inspire à propos de l'écriture...</span></p>
->>>>>>> Stashed changes
 <br>
 <br>
 <div class = "ouf">

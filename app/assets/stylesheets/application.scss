@@ -438,3 +438,23 @@ input{
   position: relative;
   z-index: 1;
 }
+
+///////////////////////
+.tableCollection{
+  position:relative;
+  align-items: center;
+  empty-cells: hide;
+  border-spacing: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Title{
+  font-size: 30px;
+  background-color: white; 
+  color: black; 
+  text-align: center;
+  font-family: 'Lucida Console', 'Courier New', monospace;
+  position:relative; 
+  z-index: 1;
+}

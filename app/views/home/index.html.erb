@@ -4,8 +4,11 @@
     <div id=log><%= @logs %></div>  
   </div>
   <div id="page2" class="page">
-    <h1>Créations</h1>
-    <table class="center ">
+    <br>
+    <br>
+    <p style="text-align: center;"><span class="Title">Collection</span></p>
+    <br>
+    <table class="tableCollection">
      <% var = 0
         idImage = 0 
         tabId = Array.new 
@@ -24,14 +27,14 @@
                   end
                 %>
                 
-                  <%= link_to image_tag(writing_def.writing_images.last.image, size: "500x350",class: "image"), home_index2_path(id:  h[writing_def.writing_images.last.image.id]) %>
+                  <%= link_to image_tag(writing_def.writing_images.last.image, size: "400x280",class: "image"), home_index2_path(id:  h[writing_def.writing_images.last.image.id]) %>
                     <div class="w-d"; 
                     style=
-                    "margin-left: <%=writing_def.x.present? && writing_def.x != 0 ? ((writing_def.x*500).to_s + "px") : "0px"%>;
-                    margin-top: <%=writing_def.y.present? && writing_def.y != 0 ? ((writing_def.y*350).to_s + "px") : "0px"%>;
-                    width: <%=writing_def.w.present? && writing_def.w != 0 ? ((writing_def.w*500).to_s + "px") : "auto"%>;
-                    height: <%=writing_def.h.present? && writing_def.h != 0 ? ((writing_def.h*350).to_s + "px") : "auto"%>;
-                    font-size: <%=writing_def.font_size.present? && writing_def.font_size != 0 ? ((writing_def.font_size*500/1000).to_s + "px") : "auto"%>;
+                    "margin-left: <%=writing_def.x.present? && writing_def.x != 0 ? ((writing_def.x).to_s + "px") : "0px"%>;
+                    margin-top: <%=writing_def.y.present? && writing_def.y != 0 ? ((writing_def.y).to_s + "px") : "0px"%>;
+                    width: <%=writing_def.w.present? && writing_def.w != 0 ? ((writing_def.w).to_s + "px") : "auto"%>;
+                    height: <%=writing_def.h.present? && writing_def.h != 0 ? ((writing_def.h).to_s + "px") : "auto"%>;
+                    font-size: <%=writing_def.font_size.present? && writing_def.font_size != 0 ? ((writing_def.font_size).to_s + "px") : "30px"%>;
                     font-family: <%=writing_def.font_family.to_s%>;"
                     >
                       <%= writing_def.body %>
@@ -50,3 +53,26 @@
     </table>        
   </div>
 </div>
+
+<script>
+  var h = $(window).height();
+  var w = $(window).width();
+  var img= document.getElementsByClassName("image");
+  var text= document.getElementsByClassName("w-d");
+   
+  for (i = 0; i < img.length; i++){
+    img[i].style.height = ((w-150)/3)*0.7.toString()+"px";
+    img[i].style.width = ((w-150)/3).toString()+"px";
+   
+  }
+  console.log((((w-150)/3)*0.7))
+  console.log(((((w-150)/3)*0.7)*parseFloat(text[0].style.marginLeft, 10)).toString()+"px")
+  for (i = 0; i < text.length; i++){
+    text[i].style.marginLeft = (((w-150)/3))*parseFloat(text[i].style.marginLeft, 10).toString()+"px";
+    text[i].style.marginTop = (((w-150)/3)*0.7)*parseFloat(text[i].style.marginTop, 10).toString()+"px";
+    text[i].style.width= (((w-150)/3))*parseFloat(text[i].style.width, 10).toString()+"px";
+    text[i].style.height = (((w-150)/3)*0.7)*parseFloat(text[i].style.height, 10).toString()+"px";
+    text[i].style.fontSize = (((w-150)/3)*0.00100*parseFloat(text[i].style.fontSize, 10)).toString()+"px";
+  }
+  
+</script>
