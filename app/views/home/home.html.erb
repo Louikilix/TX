@@ -1,4 +1,4 @@
-<body style=" background-color: #171515;">
+<body style=" background-color: #171515; overflow: hidden;">
     
     <div style="font-size: 30px; color: #DC143C">
         <% if flash[:error] %>
@@ -6,9 +6,9 @@
         <% end %>
     </div>
     <br>
-    <p style="text-align: center;"><span class="Title">  🇫🇷 Séléctionnez une image qui vous insipire à propos de l'écriture...</span></p>
+    <p style="text-align: center;"><span class="Title" style="font-size: 22px">  🇫🇷 Séléctionnez une image qui vous insipire à propos de l'écriture...</span></p>
     <br>
-    <p style="text-align: center;"><span class="Title">  🇬🇧 Select an image that inspires you about writing....</span></p>
+    <p style="text-align: center;"><span class="Title" style="font-size: 22px">  🇬🇧 Select an image that inspires you about writing....</span></p>
     <br>
     <br>
     <br>
@@ -32,8 +32,8 @@
     </div>
     <br>
     <br>
-    <form action=home/index2 align="right" style="font-size: 30px; font-family: 'Lucida Console', 'Courier New', monospace; margin-right: 80px;">
-        <input type="submit" value="Collection" />
+    <form action=<%= home_index_path %> align="right" style="font-size: 30px; font-family: 'Lucida Console', 'Courier New', monospace; margin-right: 80px;margin-bottom:10px; z-index:200">
+        <input style="z-index: 200;" type="submit" value="Collection" />
     </form>
 <div class= "splash">
         <div class="fade-in">
@@ -89,17 +89,23 @@
         const randomMode = Math.floor(Math.random() * mode.length);
 
         var elem = document.createElement("div");
+        var s = randomIntFromInterval(5, 50);
+        var left = Math.round(Math.random() * fullWidth)
+        var top = Math.round(Math.random() * fullHeight)
+
         elem.textContent = text[randomText];
         elem.style.position = "absolute";
         elem.style.color = "#D3D3D3";
         elem.style.opacity="0";
-        var s = randomIntFromInterval(5, 50);
         elem.style.zIndex=s;
         elem.style.fontSize = s.toString()+"px";
         elem.style.writingMode = mode[randomMode];
         elem.style.fontFamily = font[randomFont];
-        elem.style.left = Math.round(Math.random() * fullWidth) + "px";
-        elem.style.top = Math.round(Math.random() * fullHeight) + "px";
+        elem.style.overflow = "hidden";
+        elem.style.left = left + "px";
+        elem.style.top = top + "px";
+        elem.style.width = (fullWidth - left) + "px";
+        elem.style.height = (fullHeight - top) + "px";
         document.body.appendChild(elem);
         var steps = 0;
         var timer = setInterval(function() {

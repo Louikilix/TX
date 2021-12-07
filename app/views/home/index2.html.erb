@@ -5,17 +5,14 @@
   <div id="page1" class="page">
     <div id=log><%= @logs %></div>  
   </div>
- 
   <div id="page2" class="page">
     <div id="back" style="word-break: break-all; font-size: 20px; color: #D3D3D3; z-index: -1; position:absolute;font-family: Times New Roman;"> </div>
     <br>
-    <br>
+    <a href=<%=root_path%>><img src=<%=image_url('home2.png')%> class="HomeButton"></a>
     <p style="text-align: center;"><span class="Title">Créations</span></p>
      <% var = 0 
         ary = Array.new 
      %>
-     <br>
-     <br>
      <br>
      <br>
             <div class="slideshow-container">
