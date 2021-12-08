@@ -1,11 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <div class= "exploring" >
-  <div id="hidden-part-1">
-    <div class="pointer-1">
-      <%= @writing_information_text_1 %>
+  <% if @writing_information_text_1.present? && @writing_information_text_3.present? %>
+     <div id="hidden-sub-parts-1"> 
+      <div id="sub-hidden-part-1">
+        <div class="sub-pointer-1">
+          <%= @writing_information_text_1 %>
+        </div>
+      </div>
+      <div id="sub-hidden-part-2">
+        <div class="sub-pointer-2">
+          <%= @writing_information_text_2 %>
+        </div>
+      </div>
+      <div id="sub-hidden-part-3">
+        <div class="sub-pointer-3">
+          <%= @writing_information_text_3 %>
+        </div>
+      </div>
     </div>
-  </div>
+  <% elsif @writing_information_text_1.present? %>
+    <div id="hidden-part-1">
+      <div class="pointer-1">
+        <%= @writing_information_text_1 %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="init", style="text-align:center; font-size: 30px">
     <p style="text-align: center;"><span style="font-size: 30px;background-color: white; color: black; font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 1;">Définition</span></p>
@@ -38,11 +58,31 @@
     <%= render 'form', writing_definition: @writing_definition, class:".center" %>
   </div>
 
-  <div id="hidden-part-2">
-    <div class="pointer-2">
-      <%= @writing_information_text_2 %>
+  <% if @writing_information_text_1.present? && @writing_information_text_3.present? %>
+     <div id="hidden-sub-parts-2"> 
+      <div id="sub-hidden-part-4">
+        <div class="sub-pointer-4">
+          <%= @writing_information_text_4 %>
+        </div>
+      </div>
+      <div id="sub-hidden-part-5">
+        <div class="sub-pointer-5">
+          <%= @writing_information_text_5 %>
+        </div>
+      </div>
+      <div id="sub-hidden-part-6">
+        <div class="sub-pointer-6">
+          <%= @writing_information_text_6 %>
+        </div>
+      </div>
     </div>
-  </div>
+  <% elsif @writing_information_text_2.present? %>
+    <div id="hidden-part-2">
+      <div class="pointer-2">
+        <%= @writing_information_text_2 %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <!-- Only way to correct home page interval bug  -->

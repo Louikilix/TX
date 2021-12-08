@@ -243,7 +243,67 @@ docReady(function() {
     
     const pointer1 = document.querySelector('.pointer-1');
     const pointer2 = document.querySelector('.pointer-2');
-    if (pointer1 && pointer2){
+
+    const sub_pointer1 = document.querySelector('.sub-pointer-1');
+    const sub_pointer2 = document.querySelector('.sub-pointer-2');
+    const sub_pointer3 = document.querySelector('.sub-pointer-3');
+    const sub_pointer4 = document.querySelector('.sub-pointer-4');
+    const sub_pointer5 = document.querySelector('.sub-pointer-5');
+    const sub_pointer6 = document.querySelector('.sub-pointer-6');
+
+    if (sub_pointer1 && sub_pointer2 && sub_pointer3 && sub_pointer4 && sub_pointer5 && sub_pointer6) {
+        document.getElementById('sub-hidden-part-1').addEventListener('mousemove', (e) => {
+            sub_pointer1.style.visibility = "visible"
+            sub_pointer1.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
+        });
+        document.getElementById('sub-hidden-part-1').addEventListener('mouseout', (e) => {
+            sub_pointer1.style.visibility = "hidden"
+        });
+
+        document.getElementById('sub-hidden-part-2').addEventListener('mousemove', (e) => {
+            sub_pointer2.style.visibility = "visible"
+            sub_pointer2.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
+        });
+        document.getElementById('sub-hidden-part-2').addEventListener('mouseout', (e) => {
+            sub_pointer2.style.visibility = "hidden"
+        });
+
+        document.getElementById('sub-hidden-part-3').addEventListener('mousemove', (e) => {
+            sub_pointer3.style.visibility = "visible"
+            sub_pointer3.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
+        });
+        document.getElementById('sub-hidden-part-3').addEventListener('mouseout', (e) => {
+            sub_pointer3.style.visibility = "hidden"
+        });
+
+        document.getElementById('sub-hidden-part-4').addEventListener('mousemove', (e) => {
+            sub_pointer4.style.visibility = "visible"
+            sub_pointer4.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
+        });
+        document.getElementById('sub-hidden-part-4').addEventListener('mouseout', (e) => {
+            sub_pointer4.style.visibility = "hidden"
+        });
+
+        document.getElementById('sub-hidden-part-5').addEventListener('mousemove', (e) => {
+            sub_pointer5.style.visibility = "visible"
+            sub_pointer5.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
+        });
+        document.getElementById('sub-hidden-part-5').addEventListener('mouseout', (e) => {
+            sub_pointer5.style.visibility = "hidden"
+        });
+
+        document.getElementById('sub-hidden-part-6').addEventListener('mousemove', (e) => {
+            sub_pointer6.style.visibility = "visible"
+            sub_pointer6.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
+        });
+        document.getElementById('sub-hidden-part-6').addEventListener('mouseout', (e) => {
+            sub_pointer6.style.visibility = "hidden"
+        });
+
+        $('.reload-link').click(function() {
+            location.reload();
+        })
+    } else if (pointer1 && pointer2){
         document.getElementById('hidden-part-1').addEventListener('mousemove', (e) => {
             pointer1.style.visibility = "visible"
             pointer1.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;
@@ -251,6 +311,7 @@ docReady(function() {
         document.getElementById('hidden-part-1').addEventListener('mouseout', (e) => {
             pointer1.style.visibility = "hidden"
         });
+
         document.getElementById('hidden-part-2').addEventListener('mousemove', (e) => {
             pointer2.style.visibility = "visible"
             pointer2.style.clipPath = `circle(100px at ${e.offsetX}px ${e.offsetY}px)`;

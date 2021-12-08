@@ -64,6 +64,6 @@ class Admins::WritingInformationsController < Admins::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admins_writing_information_params
-      params.require(:writing_information).permit(:text1, :text2)
+      params.require(:writing_information).permit(:text1, :text2, :text3, :text4, :text5, :text6)
     end
 end
