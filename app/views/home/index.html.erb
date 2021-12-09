@@ -65,14 +65,13 @@
     img[i].style.width = ((w-150)/3).toString()+"px";
    
   }
-  console.log((((w-150)/3)*0.7))
-  console.log(((((w-150)/3)*0.7)*parseFloat(text[0].style.marginLeft, 10)).toString()+"px")
   for (i = 0; i < text.length; i++){
     text[i].style.marginLeft = (((w-150)/3))*parseFloat(text[i].style.marginLeft, 10).toString()+"px";
     text[i].style.marginTop = (((w-150)/3)*0.7)*parseFloat(text[i].style.marginTop, 10).toString()+"px";
     text[i].style.width= (((w-150)/3))*parseFloat(text[i].style.width, 10).toString()+"px";
     text[i].style.height = (((w-150)/3)*0.7)*parseFloat(text[i].style.height, 10).toString()+"px";
-    text[i].style.fontSize = (((w-150)/3)*0.00100*parseFloat(text[i].style.fontSize, 10)).toString()+"px";
+    text[i].style.fontSize = (((w-150)/3)*0.001*parseFloat(text[i].style.fontSize, 10)).toString()+"px";
+    text[i].style.lineHeight = "normal";
   }
   
 </script>
