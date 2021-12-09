@@ -7,6 +7,10 @@
     <tr>
       <th>Text1</th>
       <th>Text2</th>
+      <th>Text3</th>
+      <th>Text4</th>
+      <th>Text5</th>
+      <th>Text6</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +20,10 @@
       <tr>
         <td><%= admins_writing_information.text1 %></td>
         <td><%= admins_writing_information.text2 %></td>
+        <td><%= admins_writing_information.text3 %></td>
+        <td><%= admins_writing_information.text4 %></td>
+        <td><%= admins_writing_information.text5 %></td>
+        <td><%= admins_writing_information.text6 %></td>
         <td><%= link_to 'Show', [:admins, admins_writing_information] %></td>
         <td><%= link_to 'Edit', edit_admins_writing_information_path(admins_writing_information) %></td>
         <td><%= link_to 'Destroy', [:admins, admins_writing_information], method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -20,16 +20,22 @@ class WritingDefinitionsController < ApplicationController
         #before we used defs:
         #@writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).limit(30)
         #now we use this
-        @writing_information_text_1 = WritingInformation.last.text1
-        @writing_information_text_2 = WritingInformation.last.text2
+        #see below
       else
         @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).first
         #for the hidden texts:
         #before we used defs:
         #@writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).limit(30)
         #now we use this
-        @writing_information_text_1 = WritingInformation.last.text1
-        @writing_information_text_2 = WritingInformation.last.text2
+        #see below:
+      end
+      @writing_information_text_1 = WritingInformation.last.text1
+      @writing_information_text_2 = WritingInformation.last.text2
+      if WritingInformation.last.text3.present? && WritingInformation.last.text4.present? && WritingInformation.last.text5.present? && WritingInformation.last.text6.present?
+        @writing_information_text_3 = WritingInformation.last.text3
+        @writing_information_text_4 = WritingInformation.last.text4
+        @writing_information_text_5 = WritingInformation.last.text5
+        @writing_information_text_6 = WritingInformation.last.text6
       end
       @writing_definition = WritingDefinition.new
     else
