@@ -5,12 +5,18 @@ application up and running.
 
 To start the application :
 
-(install docker and docker-compose)
+Requirements:
+  (install docker and docker-compose)
+  Make sure the port 3000 si not being used
 
+Start:
 docker-compose up
 
-Go to localhost:3000
+Go to localhost:3000 on browser
 
+
+
+-----------------------------
 Things you may want to cover:
 
 * Ruby version
