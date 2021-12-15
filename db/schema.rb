@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_08_170203) do
+ActiveRecord::Schema.define(version: 2021_12_09_184554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,9 @@ ActiveRecord::Schema.define(version: 2021_12_08_170203) do
     t.float "y", default: 0.0
     t.float "w", default: 0.0
     t.float "h", default: 0.0
-    t.float "font_size"
-    t.string "font_family"
+    t.float "font_size", default: 50.0
+    t.string "font_family", default: "Times"
+    t.string "color", default: "#000"
   end
 
   create_table "writing_definitions_images", id: false, force: :cascade do |t|

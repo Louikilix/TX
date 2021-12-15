@@ -71,6 +71,16 @@ class WritingDefinitionsController < ApplicationController
   def update
     respond_to do |format|
       if @writing_definition.update(writing_definition_params)
+        if @writing_definition.font_size.present? 
+          if @writing_definition.font_size < 10
+            @writing_definition.font_size = 10
+            @writing_definition.save
+          end
+          if @writing_definition.font_size > 1000
+            @writing_definition.font_size = 1000
+            @writing_definition.save
+          end
+        end
         if params[:not_finish_yet].present?
           format.html { redirect_to @writing_definition }#, notice: "Writing definition was successfully updated." }
         else
@@ -83,7 +93,6 @@ class WritingDefinitionsController < ApplicationController
           @writing_definition.save
           format.html { redirect_to home_index_path, notice: "Writing definition was successfully finished." }
         end
-
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @writing_definition.errors, status: :unprocessable_entity }
@@ -118,6 +127,6 @@ class WritingDefinitionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def writing_definition_params
-      params.fetch(:writing_definition, {}).permit(:body, :image_id, :author_published, :author_signature, :x, :y, :w, :h, :font_size, :font_family)
+      params.fetch(:writing_definition, {}).permit(:body, :image_id, :author_published, :author_signature, :x, :y, :w, :h, :font_size, :font_family, :color)
     end
 end

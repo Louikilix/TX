@@ -329,10 +329,12 @@ ul.navbar-nav {
 }
 
 
+/*
 #draggable-element:hover, .w-d:hover {
   background: rgba(0,0,0,.5);
   color: #fff;
 }
+*/
 
 #draggable-element:hover {
   overflow: scroll;
@@ -360,13 +362,9 @@ ul.navbar-nav {
 
 .wd, .w-d {
   z-index: 9;
-  //border: 1px solid #d3d3d3;
   text-align: center;
-  //min-height: 150px;
-  //min-width: 300px;
-  //max-height: 300px;
-  //max-width: 600px;
 }
+
 
 /*Drgable */
 

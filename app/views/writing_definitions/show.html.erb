@@ -1,21 +1,26 @@
 <br>
 <br>
 <br>
+<%= link_to 'Modifier l\'image associée / Edit the associated image ?', new_writing_image_path(def_id: @writing_definition.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'link image-modif'}  %>
+
 <div class = "show-container">
+
 	<div class = "show-final-container">
+
 		<div class = "definition-container">
 			<% if @writing_definition.writing_images.last.present? %>
 				<div id="writing-image">
 				<br>
 					<%=image_tag (@writing_definition.writing_images.last.image), :size => "1000x700",class: "img-responsive", id: "writing-image-ele" %>
 					<div id="draggable-element"; 
-					class="wd"; 
+					class= "wd";
 					data-x=<%= @writing_definition.x %>; 
 					data-y=<%= @writing_definition.y %>; 
 					data-w=<%= @writing_definition.w %>; 
 					data-h=<%= @writing_definition.h %>; 
 					style=
-					"font-size: <%=@writing_definition.font_size.to_s+"px"%>; 
+					"color: <%=@writing_definition.color.to_s%>;
+					font-size: <%=@writing_definition.font_size.to_s+"px"%>; 
 					font-family: <%=@writing_definition.font_family.to_s%>;";
 					>
 						  <div class="wd-header noselect"></div>
@@ -28,7 +33,7 @@
 			  	<%= hidden_field_tag(:not_finish_yet, true) %>
 			    <div class="actions">
 
-			      <h4> Voulez-vous modifier votre définition/ Would you like to edit your definition? </h4>
+			      <h4> Voulez-vous modifier votre définition / Would you like to edit your definition? </h4>
 			      <%= form.text_area(:body, rows: 5, cols:40) %>
 			      <%= form.text_field :x , id: "x"%>
 			      <%= form.text_field :y , id: "y"%>
@@ -37,48 +42,42 @@
 			      
 			      <div class="definition-features">
 			      	<div id="font-size">
-			      		<h4> taille de la police/ font size: </h4>
+			      		<h4> Taille de la police / Font Size: </h4>
 				      	<%= form.text_field :font_size , id: "font-size"%>
 			      	</div>
 				      <div id="font-family">
-					      <h4> type de la police/ font family: </h4>
-			      		<%= form.text_field :font_family , id: "font-family"%>
-							</div>		      		
+					      <h4> Type de la police / Font Family: </h4>
+					      
+			      		
+			      		<%= form.select :font_family, [["Arial", "Arial"], ["Times", "Times"], ["Cursive", "Cursive"], ["Gotham", "Gotham"], ["Mistral", "Mistral"], ["Bodoni", "Bodoni"], ["Cooper Black", "Cooper Black"], ["Helvetica", "Helvetica"], ["Futura", "Futura"], ["Auriol", "Auriol"], ["Transport", "Transport"], ["Comic Sans", "Comic Sans"], ["Binary BRK", "Binary BRK"]] , id: "font-family" %>
+							</div>
+							<div>
+								<h4> Couleur de la police / Font Color:</h4>
+					      <%= form.radio_button :color, "#000" %> Noir/Black
+					      <%= form.radio_button :color, "#fff" %> Blanc/White
+					     </div>	      		
 		      	</div>
 		      </div>
 		      <div class = "update">
-		      	<%= form.submit "Mise à jour/ Update" %>
-
-		      	<%= link_to 'Modifier l\'image associée/ Edit the associated image ?', new_writing_image_path(def_id: @writing_definition.id),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'link'}  %>
-
-						<%= link_to 'Terminer/ Finish', edit_writing_definition_url(@writing_definition),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'link'}  %>
+		      	<%= form.submit "Mise à jour / Update" %>
 		      </div>
 				<% end %>
-
-		      	
-	      	<div class = "buttons">
-						<%= form_with(model: @writing_definition, id: "update") do |form1| %>
-					  	<%= hidden_field_tag(:not_finish_yet, true) %>
-					    <div class="actions">
-					      <%= form1.text_field :x , id: "x0", value: 0%>
-					      <%= form1.text_field :y , id: "y0", value: 0%>
-					      <%= form1.submit "Position originale/ Reset position" %>
-					    </div>
-						<% end %>
-						
-						<%= form_with(model: @writing_definition, id: "update") do |form2| %>
-					  	<%= hidden_field_tag(:not_finish_yet, true) %>
-					    <div class="actions">
-					      <%= form2.text_field :w , id: "w0", value: 0%>
-					      <%= form2.text_field :h , id: "h0", value: 0%>
-					      <%= form2.submit "Taille originale/ Reset size" %>
-					    </div>
-						<% end %>
-					</div>
-
-			    
-				<br>
+				<div class = "buttons">
+							<%= form_with(model: @writing_definition, id: "update") do |form1| %>
+						  	<%= hidden_field_tag(:not_finish_yet, true) %>
+						    <div class="actions">
+						      <%= form1.text_field :x , id: "x0", value: 0%>
+						      <%= form1.text_field :y , id: "y0", value: 0%>
+						      <%= form1.text_field :w , id: "w0", value: 0%>
+						      <%= form1.text_field :h , id: "h0", value: 0%>
+						      <%= form1.submit "Position & Taille originale / Reset position & Size" %>
+						    </div>
+							<% end %>
+						</div>
 			</div>
+		</div>
+		<div class="publish">
+			<%= link_to 'Publier / Publish', edit_writing_definition_url(@writing_definition),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'link'}  %>
 		</div>
 	</div>
 </div>
