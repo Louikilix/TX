@@ -4,6 +4,8 @@
   <head>
     <title>Writing is</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- fonts imported for the creation page -->
     <link href="http://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
     <link href="http://fonts.cdnfonts.com/css/mistral" rel="stylesheet">
     <link href="http://fonts.cdnfonts.com/css/bodoni" rel="stylesheet">
@@ -13,7 +15,6 @@
     <link href="http://fonts.cdnfonts.com/css/comic-sans" rel="stylesheet">
     <link href="http://fonts.cdnfonts.com/css/binary" rel="stylesheet">
 
-    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -30,7 +31,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   </head>
 
-  <body style=" background-color: #171515;" id="<%= controller.controller_name + "_" + controller.action_name %>">
+  <body style=" background-color: #000;" id="<%= controller.controller_name + "_" + controller.action_name %>">
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>

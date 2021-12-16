@@ -5,7 +5,6 @@ class Admins::ApplicationController < ApplicationController
 
   before_action :authenticate_admin!
 
-
   def after_sign_out_path_for(resource_or_scope)
     admins_root_path
   end
@@ -14,5 +13,4 @@ class Admins::ApplicationController < ApplicationController
     admins_root_path
   end
 
-
- end
+end

@@ -44,11 +44,6 @@
       <p> the autor didn't agree that we display his or her production on the home page so that future users can use it to create their own <p>
     <% end %>
     <br>
-    
-    <br>
-    <p> to see if we want to add an image to the def created by an admin: what you see below are image ids <p> <br>
-    <%= form.select :image_id, options_for_select(WritingImage.all.map{ |i| [i.id, {'data-img-src'=>i.image}] }), include_blank: true %>
-    <br>
 
     <%= form.submit %>
 
