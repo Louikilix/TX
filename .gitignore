@@ -38,3 +38,12 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore tmp files
+/tmp
+
+# Ignore log files
+/log
+
+# Ignore personal database setup
+/config/database.yml
