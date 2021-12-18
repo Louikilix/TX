@@ -8,6 +8,7 @@ function docReady(fn) {
     }
 }
 
+// drag&drop module
 function initDragElement() {
     var pos1 = 0,
     pos2 = 0,
@@ -89,6 +90,7 @@ function initDragElement() {
     }
 }
 
+// Resizing module
 function initResizeElement() {
     var wds = document.getElementsByClassName("wd");
     var element = null;
@@ -164,30 +166,39 @@ docReady(function() {
     }
 
 
-/**********************automatic destroy of dirty productions***************************************/
+/**********************ajax tip: automatic destroy of dirty productions***************************************/
+
+    //If a user is on the creation process and decide to abort it by quitting the process we set a variable: del (initialized to false) to true 
+    //Thus when the page is unload we can launch an ajax request to destroy the curent creation which is considered "dirty"
 
     var del = false
 
+    // retreive the page where you want to apply the ajax tip: here the creation page:
     var stepToBlock1 = document.getElementById("writing_definitions_show");
-    // in case of image modification problem implying a redirection to the writing_images_create page:
+
+    // the protection had also to be added to the  writing_images_create page:
+    // Indeed if a user decide to modify the image of a creation on the creation page
+    // he or she can encounter a problem in case of image modification: wrong type of file uploaded/ no file uploaded/etc...
+    // these problem imply a redirection to the writing_images_create page and explain why we have to aplly the ajax tip here too
     var stepToBlock2 = document.getElementById("writing_images_create");
 
     if(stepToBlock1 != null || stepToBlock2 != null) {
         $(window).bind('beforeunload', function() {
-            //following two lines will cause the browser to ask the user if they
-            //want to leave. The text of this dialog is controlled by the browser.
-            //e.preventDefault(); //per the standard
-            //e.returnValue = ''; //required for Chrome
-            // user has left the page, do stuff here
             del = true
             return(false);
         })
     }
 
+    //here we have to cancel the ajax tip when the user:
+
+    //- click on the link to modify the creation image or the link to publish
     $("a").click(function () {
         del = false
     });
+    // these links lead to the creation of javascript pop up handlelinf the ajax tip:
+    // see views/writing_images/new.js.erb and views/writing_definitions/edit.js.erb
 
+    //- click on update to update the creation
     $('form').submit(function () {
         del = false
         $(window).unbind('beforeunload');
@@ -208,12 +219,11 @@ docReady(function() {
         return "Are you sure you want to leave this page without saving?";
     }
 
-    /************************************DRAGGING***************************************************/
+/************************************DRAGGING***************************************************/
 
     var writing_definition = document.getElementById('draggable-element')
     var writing_image = document.getElementById("writing-image-ele")
     if (writing_definition && writing_image) {
-        //writing_definition.style.fontSize = 0.02 * (writing_image.offsetWidth + writing_image.offsetHeight)+ 'px'
         //def position
         w_x = parseFloat(writing_definition.dataset.x)
         w_y = parseFloat(writing_definition.dataset.y)
@@ -239,7 +249,7 @@ docReady(function() {
         initResizeElement();
     }
 
-    /************************************magnifying glass***************************************************/
+/************************************magnifying glass***************************************************/
     
     const pointer1 = document.querySelector('.pointer-1');
     const pointer2 = document.querySelector('.pointer-2');
@@ -324,7 +334,7 @@ docReady(function() {
         })
     }
 
-    /************************************home page***************************************************/
+/************************************home page***************************************************/
 
 });
 

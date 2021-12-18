@@ -11,11 +11,12 @@ class WritingImagesController < ApplicationController
   end
 
   # GET /writing_images/new
-
-
+  # Here this action allows users to change the image linked to their creation on the creation page
   def new
     if @def_id = params[:def_id]
       @writing_image = WritingImage.new
+      #the code bellow allows to render the pop up corresponding to the code of the view views/writing_images/new.js.erb
+      #when a user wants to change the image of its creation on the creation page
       respond_to do |format|
         format.html {}
         format.js
@@ -26,25 +27,21 @@ class WritingImagesController < ApplicationController
   end
 
   # POST /writing_images or /writing_images.json
+  # Here this action allows users to change the image linked to their creation on the creation page
   def create
     @writing_image = WritingImage.new(writing_image_params)
 
     respond_to do |format|
       if @writing_image.save && params[:def_id].present?
-        #SUPPRESSION DE LA RELATION PREALABLE!
-        #INUTILE => Il y en aura max 2 par utulisateurs 
-        # if @writing_image.writing_definitions.first.present?
-        #   wd = @writing_image.writing_definitions.first
-        #   @writing_image.writing_definitions.delete(wd)
-        #   @writing_image.save
-        # end
+        # However, if a user decide to change the image more than twice we have to proceed as follows:
         if WritingDefinition.find(params[:def_id]).writing_images.count == 2 
           image_to_delete = WritingDefinition.find(params[:def_id]).writing_images.last
           image_to_delete.destroy
-          #=> Il y en aura bien max 2 par utulisateurs
+          # This allows the creation to have no more than 2 writining_image linked
         end
+        #Finally, we create the relation between the new image and the current definition
         @writing_image.writing_definitions << WritingDefinition.find(params[:def_id])
-        format.html { redirect_to @writing_image.writing_definitions.last, notice: "Writing definition + image was successfully created." }
+        format.html { redirect_to @writing_image.writing_definitions.last}#, notice: "Writing definition + image was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @writing_image.errors, status: :unprocessable_entity }

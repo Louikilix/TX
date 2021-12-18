@@ -32,14 +32,12 @@
 				<%= form_with(model: @writing_definition, id: "update") do |form| %>
 			  	<%= hidden_field_tag(:not_finish_yet, true) %>
 			    <div class="actions">
-
 			      <h4> Voulez-vous modifier votre définition / Would you like to edit your definition? </h4>
 			      <%= form.text_area(:body, rows: 5, cols:40) %>
 			      <%= form.text_field :x , id: "x"%>
 			      <%= form.text_field :y , id: "y"%>
 			      <%= form.text_field :w , id: "w"%>
 			      <%= form.text_field :h , id: "h"%>
-			      
 			      <div class="definition-features">
 			      	<div id="font-size">
 			      		<h4> Taille de la police / Font Size: </h4>
@@ -47,8 +45,6 @@
 			      	</div>
 				      <div id="font-family">
 					      <h4> Type de la police / Font Family: </h4>
-					      
-			      		
 			      		<%= form.select :font_family, [["Arial", "Arial"], ["Times", "Times"], ["Cursive", "Cursive"], ["Gotham", "Gotham"], ["Mistral", "Mistral"], ["Bodoni", "Bodoni"], ["Cooper Black", "Cooper Black"], ["Helvetica", "Helvetica"], ["Futura", "Futura"], ["Auriol", "Auriol"], ["Transport", "Transport"], ["Comic Sans", "Comic Sans"], ["Binary BRK", "Binary BRK"]] , id: "font-family" %>
 							</div>
 							<div>
@@ -77,17 +73,10 @@
 			</div>
 		</div>
 		<div class="publish">
-			<%= link_to 'Publier / Publish', edit_writing_definition_url(@writing_definition),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'link'}  %>
+			<%= link_to 'Publier / Publish', edit_writing_definition_url(@writing_definition),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'link publish-creation'}  %>
 		</div>
 	</div>
 </div>
-
-<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"></div>
-  </div>
-</div>
-<br>
 
 <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

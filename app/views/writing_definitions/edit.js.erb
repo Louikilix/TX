@@ -1,3 +1,4 @@
+//We use the same system to update the fiels x, y, w & h in the /_edit.html.erb form:
 function get_coordinates() {
     img = document.getElementById("writing-image-ele")
     writing_definition = document.getElementById('draggable-element')
@@ -22,6 +23,7 @@ function get_size() {
     document.getElementById('h-t').value = param_h
 }
 
+//We had to add the following to allows the ajax tip (mentioned in app/assets/javascript/app.js) to work if the user close the pop up instead of submiting
 var del = false
 
 $(window).unbind('beforeunload');
@@ -47,8 +49,6 @@ $('form').submit(function () {
 $(window).on('unload', function (){
     if (del) {
         var id = $("#hidden-form").data("id") 
-        console.log("il est parti");
-        console.log(id)
         $.ajax({
           type: "DELETE",
           url: "/writing_definitions/"+id

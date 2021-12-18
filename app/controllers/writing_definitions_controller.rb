@@ -20,15 +20,16 @@ class WritingDefinitionsController < ApplicationController
         #before we used defs:
         #@writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(author_published: true).limit(30)
         #now we use this
-        #see below
+        #see below: *1
       else
         @corresponding_def = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).first
         #for the hidden texts:
         #before we used defs:
         #@writing_definitions = WritingDefinition.order(Arel.sql('RANDOM()')).where(published:true).where(author_published: true).limit(30)
         #now we use this
-        #see below:
+        #see below: *1
       end
+      # *1:
       @writing_information_text_1 = WritingInformation.last.text1
       @writing_information_text_2 = WritingInformation.last.text2
       if WritingInformation.last.text3.present? && WritingInformation.last.text4.present? && WritingInformation.last.text5.present? && WritingInformation.last.text6.present?
@@ -43,7 +44,10 @@ class WritingDefinitionsController < ApplicationController
     end
   end
 
+  # Here this action allows users to publish their creation on the creation page
   def edit
+    #the code bellow allows to render the pop up corresponding to the code of the view views/writing_definitions/edit.js.erb
+    #when a user wants to publish his or her creation
     respond_to do |format|
       format.html { update }
       format.js
@@ -71,6 +75,7 @@ class WritingDefinitionsController < ApplicationController
   def update
     respond_to do |format|
       if @writing_definition.update(writing_definition_params)
+        # to prevent the definition font size from being less than 10 px or more than 1000px
         if @writing_definition.font_size.present? 
           if @writing_definition.font_size < 10
             @writing_definition.font_size = 10
@@ -86,12 +91,14 @@ class WritingDefinitionsController < ApplicationController
         else
           #here is the last step before finish =>
           @writing_definition.finished = true
-          # To solve the problem Alex mentioned about the fact that a writing def can be linked to 2 writing images:
+          # To solve the potential problem about the fact that a writing definition can be linked to 2 writing images:
           # if @writing_definition.writing_images.count == 2 
           #   @writing_definition.writing_images.delete(@writing_definition.writing_images.first)
           # end
+          #Here, the code commented above allows to delete the relation between the image and the definition of the initial creation
+          # we decided to keep it commented for the moment
           @writing_definition.save
-          format.html { redirect_to home_index_path, notice: "Writing definition was successfully finished." }
+          format.html { redirect_to home_index_path }#, notice: "Writing definition was successfully finished." }
         end
       else
         format.html { render :edit, status: :unprocessable_entity }

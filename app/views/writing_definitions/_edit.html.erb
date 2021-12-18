@@ -8,7 +8,6 @@
     <div class="actions">
       <p> Would you like to sign your production? <p>
       <%= form.text_field :author_signature %> 
-      
       <br>
       <p> Do you agree that we display your production on the home page so that future users can use it to create their own? <p>
       <%= form.label :author_published %> 
@@ -19,8 +18,6 @@
       <%= form.text_field :w , id: "w-t"%>
       <%= form.text_field :h , id: "h-t"%>
     </div>
-
-  
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary"><%= form.submit "Continuer"  %></button>
