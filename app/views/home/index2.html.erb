@@ -1,4 +1,3 @@
-
 <body style=" background-color: #171515;">
 <%= javascript_include_tag 'application' %>
 <div id="content">
@@ -6,11 +5,12 @@
     <div id=log><%= @logs %></div>  
   </div>
   <div id="page2" class="page">
-    <div id="back" style="word-break: break-all; font-size: 20px; color: #D3D3D3; z-index: -1; position:absolute;font-family: Times New Roman;"> </div>
+    <div id="back" style="word-break: break-all; font-size: 20px; color: #D3D3D3; z-index: -1; position:absolute;font-family: Times New Roman; overflow:hidden;"> </div>
     <br>
     <a href=<%=root_path%>><img src=<%=image_url('home2.png')%> class="HomeButton"></a>
-    <p style="text-align: center;"><span class="Title">Créations</span></p>
+    <p style="text-align: center;"><span class="Title">Galerie / Gallery</span></p>
      <% var = 0 
+        var2 = 0 
         ary = Array.new 
      %>
      <br>
@@ -24,11 +24,11 @@
                 <% @writing_definitions.each do |writing_def| %>
                     <% if (writing_def.writing_images.last.present? and not(ary.include?(writing_def.writing_images.last.image.id)))%>
                         <div class="mySlides fade2">
-                            <div class="container w-i">
-                                <%=image_tag (writing_def.writing_images.last.image), :size => "750x525" %>
+                            <div class="container2 w-i">
+                                <%=image_tag (writing_def.writing_images.last.image),class: "image" %>
                                     <% @writing_definitions.each do |writing_def2| %>
                                         <% if (writing_def2.writing_images.last.present? and writing_def.writing_images.last.image.id == writing_def2.writing_images.last.image.id)%>
-                                            <div class="w-d"; 
+                                            <div class="w-d", data-id="<%=var2%>"
                                                 style=
                                                 "margin-left: <%=writing_def2.x.present? && writing_def2.x != 0 ? ((writing_def2.x*750).to_s + "px") : "0px"%>;
                                                 margin-top: <%=writing_def2.y.present? && writing_def2.y != 0 ? ((writing_def2.y*525).to_s + "px") : "0px"%>;
@@ -36,7 +36,7 @@
                                                 height: <%=writing_def2.h.present? && writing_def2.h != 0 ? ((writing_def2.h*525).to_s + "px") : "auto"%>;
                                                 font-size: <%=writing_def2.font_size.present? && writing_def2.font_size != 0 ? ((writing_def2.font_size*750/1000).to_s + "px") : "auto"%>;
                                                 font-family: <%=writing_def2.font_family.to_s%>;
-                                                z-index: <%= var %>;"
+                                                z-index: <%= var %> + 1;"
                                                 >
                                                 <%= writing_def2.body %>
                                                 <% var+=1 %>
@@ -46,6 +46,7 @@
 
                                     <% end %>
                                 <% end %>
+                                <% var2+=1 %>
                             </div>
                          </div>
                     <% ary.push(writing_def.writing_images.last.image.id) %> 
@@ -72,26 +73,26 @@
 
         // Next/previous controls
         function plusSlides(n) {
-        showSlides(slideIndex += n);
+            showSlides(slideIndex += n);
         }
 
         // Thumbnail image controls
         function currentSlide(n) {
-        showSlides(slideIndex = n);
+            showSlides(slideIndex = n);
         }
 
         function showSlides(n) {
-        if (n == null) {
-            n = 1
-        }
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slides[slideIndex-1].style.display = "block";
+            if (n == null) {
+                n = 1
+            }
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = slides.length}
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+            slides[slideIndex-1].style.display = "block";
         }
 </script>
 
@@ -99,8 +100,6 @@
     function randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
-
-  
     var i = 0
     var arr = "";
      <% @writing_definitions.each do |writing_def| %>
@@ -120,3 +119,48 @@
     }, 35);
 </script>
 
+<script>
+  
+
+  var img= document.getElementsByClassName("image");
+  var text= document.getElementsByClassName("w-d");
+  console.log(img) 
+  var imagesLoaded = 0;
+  var totalImages = img.length;
+
+  $("img").on("load", function (event) {
+    imagesLoaded++;
+    if (imagesLoaded == totalImages) {
+      allImagesLoaded();
+    }
+  });
+
+  function allImagesLoaded() {
+    var temps = 0
+    const arrId = []
+    for (i = 0; i < img.length; i++){
+      if(img[i].naturalHeight/img[i].naturalWidth > 1) {
+        img[i].style.height = "600px"
+        img[i].style.width = "480px"
+        arrId.push(i.toString())
+    }else{
+        img[i].style.height = "525px"
+        img[i].style.width = "750px"
+
+    }
+  }
+    
+  for (i = 0; i < text.length; i++){
+      console.log(text[i].dataset.id)
+      if(arrId.includes(text[i].dataset.id)){
+            console.log(text[i].innerHTML)
+            text[i].style.marginLeft = (600 / 750)*parseFloat(text[i].style.marginLeft, 10).toString()+"px";
+            text[i].style.marginTop = (630 / 525)*parseFloat(text[i].style.marginTop, 10).toString()+"px";
+            text[i].style.width = "auto";
+            text[i].style.height = "auto";
+            
+        }
+    }
+}
+  
+</script>

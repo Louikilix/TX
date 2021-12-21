@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <div class= "exploring" >
   <% if @writing_information_text_1.present? && @writing_information_text_3.present? %>
      <div id="hidden-sub-parts-1"> 
@@ -27,35 +26,32 @@
     </div>
   <% end %>
 
-  <div class="init", style="text-align:center; font-size: 30px">
-    <p style="text-align: center;"><span style="font-size: 30px;background-color: white; color: black; font-family: 'Lucida Console', 'Courier New', monospace;position:relative; z-index: 1;">Définition</span></p>
-    <br>
-    <div id="intro" style="font-size: 19px; color: white;font-family: 'Times New Roman';text-align: center;">
-      <div>
-        <div class="flag">🇫🇷</div>
-        Une définition aléatoire vous est donnée<br>
-        Si cette définition ne vous plaît pas, <span class= "reload-link"> rechagez!</span><br>
-        Après avoir appuyer sur continuer, vous aurez la possibilité de modifier cette définition ainsi que l'image associée<br>
+  <div class="init", style="text-align:center; font-size: 20px;">
+     <p style="text-align: center;"><span class="Title" style="font-size: 22px"> Définition</span></p>
+    <div id="intro" style="font-size: 15px; color: white;font-family: 'Times New Roman';text-align: center;z-index:200;">
+      <div style="width:300px;border: solid;border-color: white;">
+        <div style="width:290px; margin: 0 auto;font-family: 'Lucida Console', 'Courier New', monospace;">
+          Voici une proposition sur ce que c’est qu’écrire.<br> <br> Rechargez la page pour en obtenir une autre si vous souhaitez, appuyer sur le bouton recharger.
+        </div>
       </div>
-      <div>
-        <div class="flag">🇬🇧</div>
-        A random definition is given to you<br>
-        If you don't like this definition, <span class= "reload-link"> reload!</span><br>
-        After pressing continue, you will have the possibility to modify this definition and the associated image<br>
+      <div style="width:300px;border: solid;border-color: white;">
+        <div style="width:290px; margin: 0 auto;font-family: 'Lucida Console', 'Courier New', monospace;">
+        Here is an thought about writing.<br> <br>Reload the page to get another one if you wish, then click one the reload button.
+        </div>
       </div>
     </div>
-    <br>
     <div style="margin: 10px 0">
-      <div style="text-align: center;font-size: 25px;">
+      <div style="text-align: center;font-size: 20px; font-weight: bold;">
         <%= @corresponding_def.body%>
       </div>
       <span class= "author"> <%= @corresponding_def.author_signature %></span>
     </div>
+     <a href="javascript:window.location.href=window.location.href"><img class = "reload", src=<%=image_url('reload.jpeg')%>></a>
     <% if @image.present? %>
-    	<%=image_tag (@image), :size => "630x455" %>
+    	<%=image_tag (@image), :size => "570x397" %>
     <% end %>
-    <br>
     <%= render 'form', writing_definition: @writing_definition, class:".center" %>
+
   </div>
 
   <% if @writing_information_text_1.present? && @writing_information_text_3.present? %>
@@ -83,8 +79,8 @@
       </div>
     </div>
   <% end %>
+ 
 </div>
-
 <!-- Only way to correct home page interval bug  -->
 <script type='text/javascript'>
   (function(){
