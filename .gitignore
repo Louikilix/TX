@@ -40,10 +40,10 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore tmp files
-tmp/*
+#tmp/*
 
 # Ignore log files
-log/*
+#log/*
 
 # Ignore personal database setup
-config/database.yml
+#config/database.yml
