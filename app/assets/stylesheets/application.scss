@@ -343,12 +343,12 @@ ul.navbar-nav {
 }
 
 
-/*
-#draggable-element:hover, .w-d:hover {
+
+#draggable-element:hover{
   background: rgba(0,0,0,.5);
   color: #fff;
 }
-*/
+
 
 #draggable-element:hover {
   overflow: scroll;
@@ -371,7 +371,7 @@ ul.navbar-nav {
 }
 
 #x, #y, #x0, #y0, #w, #h, #w0, #h0, #x-t, #y-t, #w-t, #h-t {
-  //display: none;
+  display: none;
 }
 
 .wd, .w-d {

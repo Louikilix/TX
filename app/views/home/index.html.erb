@@ -72,30 +72,30 @@
 
   function allImagesLoaded() {
     for (i = 0; i < img.length; i++){
-      if(img[i].naturalHeight/img[i].naturalWidth > 1) {
-        img[i].style.height = ((w-150)/3).toString()+"px";
-        img[i].style.width = (((w-150)/3)*0.8).toString()+"px";
-        img[i].style.textAlign = "center";
-      }else{
+      //if(img[i].naturalHeight/img[i].naturalWidth > 1) {
+        //img[i].style.height = ((w-150)/3).toString()+"px";
+        //img[i].style.width = (((w-150)/3)*0.8).toString()+"px";
+        //img[i].style.textAlign = "center";
+      //}else{
         img[i].style.height = ((w-150)/3)*0.7.toString()+"px";
         img[i].style.width = ((w-150)/3).toString()+"px";
-      }
+      //}
     }
     
     for (i = 0; i < text.length; i++){
-    if(img[i].naturalHeight/img[i].naturalWidth > 1) {
-      var id = "im-"+(i).toString()
-      var element = document.getElementById(id);
-      text[i].style.marginLeft = (((w-50)/3)*0.8)*parseFloat(text[i].style.marginLeft, 10).toString()+"px";
-      text[i].style.marginTop = (((w-100)/3))*parseFloat(text[i].style.marginTop, 10).toString()+"px";
-    }else{
+    //if(img[i].naturalHeight/img[i].naturalWidth > 1) {
+    // var id = "im-"+(i).toString()
+    // var element = document.getElementById(id);
+    //  text[i].style.marginLeft = (((w-50)/3)*0.8)*parseFloat(text[i].style.marginLeft, 10).toString()+"px";
+    //  text[i].style.marginTop = (((w-100)/3))*parseFloat(text[i].style.marginTop, 10).toString()+"px";
+    //}else{
       text[i].style.marginLeft = (((w-220)/3))*parseFloat(text[i].style.marginLeft, 10).toString()+"px";
       text[i].style.marginTop = (((w-150)/3)*0.7)*parseFloat(text[i].style.marginTop, 10).toString()+"px"; 
-    }
-    text[i].style.width= (((w-150)/3))*parseFloat(text[i].style.width, 10).toString()+"px";
-    text[i].style.height = (((w-150)/3)*0.7)*parseFloat(text[i].style.height, 10).toString()+"px";
-    text[i].style.fontSize = (((w-150)/3)*0.001*parseFloat(text[i].style.fontSize, 10)).toString()+"px";
-    text[i].style.lineHeight = "normal";
+    //}
+      text[i].style.width= (((w-150)/3))*parseFloat(text[i].style.width, 10).toString()+"px";
+      text[i].style.height = (((w-150)/3)*0.7)*parseFloat(text[i].style.height, 10).toString()+"px";
+      text[i].style.fontSize = (((w-150)/3)*0.001*parseFloat(text[i].style.fontSize, 10)).toString()+"px";
+      text[i].style.lineHeight = "normal";
     //text[i].innerHTML += text[i].style.marginLeft;
     //text[i].innerHTML += text[i].style.marginTop;
   }
