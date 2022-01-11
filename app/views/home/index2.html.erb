@@ -103,7 +103,7 @@
     var i = 0
     var arr = "";
      <% @writing_definitions.each do |writing_def| %>
-        arr += "<%=raw writing_def.body%>";
+        arr += "<%=raw writing_def.body.squish%>";
         arr += ". "
      <%end%>
 
